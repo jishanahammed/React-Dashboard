@@ -219,5 +219,4 @@ const Product = () => {
     </div>
   );
 };
-
 export default Product;
