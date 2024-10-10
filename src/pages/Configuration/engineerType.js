@@ -3,7 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash,faTimes  } from '@fortawesome/free-solid-svg-icons';
 
 const EngineerType = () => {
-  const [brands, setBrands] = useState([]);
+  const [engineers, setEngineers] = useState([
+    { name: 'Engineering', description: 'Responsible for planning, designing, and overseeing construction projects.' },
+    { name: 'Contractor', description: 'Manages the execution of construction work, including material procurement and labor management.' },
+    { name: 'Free Engineer', description: 'Independent engineer providing consulting services or working on freelance projects.' },
+  ]);
   const [newBrand, setNewBrand] = useState({ name: '', description: '' });
   const [editingIndex, setEditingIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,12 +26,12 @@ const EngineerType = () => {
     }
 
     if (editingIndex !== null) {
-      const updatedBrands = [...brands];
-      updatedBrands[editingIndex] = newBrand;
-      setBrands(updatedBrands);
+      const updatedenginners = [...engineers];
+      updatedenginners[editingIndex] = newBrand;
+      setEngineers(updatedenginners);
       setEditingIndex(null);
     } else {
-      setBrands([...brands, newBrand]);
+      setEngineers([...engineers, newBrand]);
     }
 
     setNewBrand({ name: '', description: '' });
@@ -47,13 +51,13 @@ const EngineerType = () => {
 
   const handleEditBrand = (index) => {
     setEditingIndex(index);
-    setNewBrand(brands[index]);
+    setNewBrand(engineers[index]);
     setIsModalOpen(true);
   };
 
   const handleDeleteBrand = (index) => {
-    const updatedBrands = brands.filter((_, i) => i !== index);
-    setBrands(updatedBrands);
+    const updatedenginners = engineers.filter((_, i) => i !== index);
+    setEngineers(updatedenginners);
   };
 
   return (
@@ -67,9 +71,9 @@ const EngineerType = () => {
         </button>
       </div>
 
-      <div className="card-body p-5">
-        {/* Table of brands */}
-        {brands.length > 0 ? (
+      <div className="card-body p-5 text-[15px]">
+        {/* Table of enginners */}
+        {engineers.length > 0 ? (
           <table className="min-w-full table-auto border-collapse">
             <thead>
               <tr className="bg-gray-100 dark:bg-gray-900">
@@ -80,7 +84,7 @@ const EngineerType = () => {
               </tr>
             </thead>
             <tbody>
-              {brands.map((brand, index) => (
+              {engineers.map((brand, index) => (
                 <tr key={index} className="border-b">
                   <td className="border p-2 text-left">{index+1}</td>
                   <td className="border p-2">{brand.name}</td>
@@ -102,57 +106,60 @@ const EngineerType = () => {
             </tbody>
           </table>
         ) : (
-          <p className="text-gray-500">No brands added yet.</p>
+          <p className="text-gray-500">No enginners added yet.</p>
         )}
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg w-100">
-            <div className=' border-b border-gray-300 p-3'>
-            <div className='flex justify-between'>
-                <h3 className="text-lg font-bold">
-                {editingIndex !== null ? 'Update Engineer Type' : 'Add Engineer Type'}
-                </h3>
-                <button 
-                onClick={closeModal} 
-                className="px-3 py-1 bg-orange-600 text-white rounded hover:bg-gray-400">
-                 <FontAwesomeIcon icon={faTimes}/>
-              </button>
-            </div>
-            </div>
+ <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center " style={{zIndex: 1900 }}>
+ <div className="bg-white rounded-lg w-full sm:w-96 md:w-[32rem] lg:w-[40rem]  ">
+   <div className=' border-b border-gray-300 p-3'>
+    <div className='flex justify-between'>
+      <h3 className="text-lg font-bold">
+        {editingIndex !== null ? 'Update Engineer Type' : 'Add Engineer Type'}
+      </h3>
+      <button 
+        onClick={closeModal} 
+        className="px-3 py-1 bg-orange-600 text-white rounded hover:bg-gray-400">
+        <FontAwesomeIcon icon={faTimes} />
+      </button>
+    </div>
+  </div>
 
+  <div className="p-5">
+    <div className="mb-3">
+      <input 
+        type="text" 
+        name="name" 
+        value={newBrand.name} 
+        onChange={handleInputChange} 
+        placeholder="Engineer Type Name" 
+        className={`w-full rounded border-[1.5px] ${error ? 'border-red-500' : 'border-stroke'} bg-transparent px-5 py-3 font-normal text-black outline-none transition`}
+      />
+      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+    </div>
 
-            <div className="p-5">
-              <input 
-                type="text" 
-                name="name" 
-                value={newBrand.name} 
-                onChange={handleInputChange} 
-                placeholder="Engineer Type Name" 
-                className="border p-2 w-full mb-2 rounded"
-              />
-              {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-              <input 
-                type="text" 
-                name="description" 
-                value={newBrand.description} 
-                onChange={handleInputChange} 
-                placeholder="Engineer Type Description" 
-                className="border p-2 w-full rounded"
-              />
+    <div className="mb-5">
+      <input 
+        type="text" 
+        name="description" 
+        value={newBrand.description} 
+        onChange={handleInputChange} 
+        placeholder="Engineer Type Description" 
+        className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+      />
+    </div>
 
-                <div className="flex justify-center mt-5">
+    <div className="flex justify-center mt-5">
+      <button 
+        onClick={handleAddBrand} 
+        className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 hover:rounded-xl">
+        {editingIndex !== null ? 'Update Brand' : 'Add Brand'}
+      </button>
+    </div>
+  </div>
+</div>
 
-                <button 
-                onClick={handleAddBrand} 
-                className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 hover:rounded-xl">
-                {editingIndex !== null ? 'Update Brand' : 'Add Brand'}
-                </button>
-                </div>
-            </div>
-     
-          </div>
         </div>
       )}
     </div>

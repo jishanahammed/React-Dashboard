@@ -4,8 +4,8 @@ import config from '../config';
 import { login } from '../contexts/loginContexts';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('admin@gmail.com');
+  const [password, setPassword] = useState('123456');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -14,19 +14,23 @@ const Login = () => {
       username: username,
       password: password,
     };
-
-    const url = `${config.baseurl}account/Login`;
-    try {
-      const response = await login(url, payload);
-      if (response.status === 200) {
-        localStorage.setItem('authtoken', response.data.token);
+ if(username==="admin@gmail.com"&&password==="123456"){
+  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+        localStorage.setItem('authtoken', token);
         navigate('/dashboard');
-      } else {
-        alert(response.message);
-      }
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
+  }
+    // const url = `${config.baseurl}account/Login`;
+    // try {
+    //   const response = await login(url, payload);
+    //   if (response.status === 200) {
+    //     localStorage.setItem('authtoken', response.data.token);
+    //     navigate('/dashboard');
+    //   } else {
+    //     alert(response.message);
+    //   }
+    // } catch (error) {
+    //   console.error('Error logging in:', error);
+    // }
   };
 
   return (

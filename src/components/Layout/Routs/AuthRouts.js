@@ -11,6 +11,8 @@ import DataTablePagination from '../../../pages/Tables/DataTable';
 import Brand from '../../../pages/Configuration/brand';
 import EngineerType from '../../../pages/Configuration/engineerType';
 import Category from '../../../pages/Product/category';
+import product from '../../../pages/Product/product';
+import Product from '../../../pages/Product/product';
 const AuthRouts = () => {
   return (
     <Routes>
@@ -56,7 +58,14 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
-
+   <Route 
+        path="/configuration/products/product" 
+        element={
+          <ProtectedRoute>
+            <Layout><Product /></Layout>
+          </ProtectedRoute>
+        } 
+      />
      <Route 
         path="/pages/form/layout" 
         element={

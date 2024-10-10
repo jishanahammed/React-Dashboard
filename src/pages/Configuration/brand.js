@@ -3,7 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash,faTimes  } from '@fortawesome/free-solid-svg-icons';
 
 const Brand = () => {
-  const [brands, setBrands] = useState([]);
+  const [brands, setBrands] = useState([
+    { name: 'Risen', description: 'Leading manufacturer of solar panels and photovoltaic solutions.' },
+    { name: 'Suntech', description: 'Innovative solar energy company providing high-efficiency panels.' },
+    { name: 'Jinko', description: 'One of the largest solar panel producers globally, known for quality.' },
+    { name: 'Sungrow', description: 'Renowned manufacturer of solar inverters and energy storage systems.' },
+    { name: 'Sofar', description: 'Expert in renewable energy solutions, focusing on inverters and storage.' },
+    { name: 'Deye', description: 'Provider of solar energy systems, specializing in inverters and storage.' },
+    { name: 'Dyness', description: 'A leading supplier of energy storage systems for solar power solutions.' },
+  ]);
+
   const [newBrand, setNewBrand] = useState({ name: '', description: '' });
   const [editingIndex, setEditingIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,7 +76,7 @@ const Brand = () => {
         </button>
       </div>
 
-      <div className="card-body p-5">
+      <div className="card-body p-5 text-[15px]">
         {/* Table of brands */}
         {brands.length > 0 ? (
           <table className="min-w-full table-auto border-collapse">
@@ -107,8 +116,8 @@ const Brand = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg w-100">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center " style={{zIndex: 1900 }}>
+          <div className="bg-white rounded-lg  w-full sm:w-96 md:w-[32rem] lg:w-[40rem] ">
             <div className=' border-b border-gray-300 p-3'>
             <div className='flex justify-between'>
                 <h3 className="text-lg font-bold">
@@ -122,35 +131,39 @@ const Brand = () => {
             </div>
             </div>
 
-
             <div className="p-5">
-              <input 
+    <div className="mb-3">
+    <input 
                 type="text" 
                 name="name" 
                 value={newBrand.name} 
                 onChange={handleInputChange} 
                 placeholder="Brand Name" 
-                className="border p-2 w-full mb-2 rounded"
-              />
-              {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-              <input 
+        className={`w-full rounded border-[1.5px] ${error ? 'border-red-500' : 'border-stroke'} bg-transparent px-5 py-3 font-normal text-black outline-none transition`}
+      />
+      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+    </div>
+
+    <div className="mb-5">
+    <input 
                 type="text" 
                 name="description" 
                 value={newBrand.description} 
                 onChange={handleInputChange} 
                 placeholder="Brand Description" 
-                className="border p-2 w-full rounded"
-              />
+        className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+      />
+    </div>
 
-                <div className="flex justify-center mt-5">
-
-                <button 
-                onClick={handleAddBrand} 
-                className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 hover:rounded-xl">
-                {editingIndex !== null ? 'Update Brand' : 'Add Brand'}
-                </button>
-                </div>
-            </div>
+    <div className="flex justify-center mt-5">
+      <button 
+        onClick={handleAddBrand} 
+        className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 hover:rounded-xl">
+        {editingIndex !== null ? 'Update Brand' : 'Add Brand'}
+      </button>
+    </div>
+  </div>
+          
      
           </div>
         </div>
