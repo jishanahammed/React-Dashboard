@@ -40,7 +40,7 @@ const Login = () => {
         <div className="w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
        <div className="flex flex-col items-center justify-center mt-5"> 
        <a href="#" className="flex items-center text-center  text-2xl font-semibold text-gray-900 dark:text-white">
-          <img className="w-20 h-20 mr-2" src="/jishanlogo.png" alt="logo" />
+          <img className="w-40 h-30 mr-2" src="maillogo.png" alt="logo" />
           
         </a>
        </div>

@@ -60,13 +60,13 @@ const Sidebar = ({ isOpen }) => {
                         onClick={() => toggleDropdown(index)}
                         className={`flex items-center w-full p-2 rounded-lg group ${
                           openDropdownIndex === index || isDropdownActive(item.subItems)
-                            ? 'font-medium bg-gray-200 text-purple-900 dark:bg-gray-700 dark:text-gray-200'
+                            ? 'font-medium bg-t-one text-two dark:bg-gray-700 dark:text-gray-200'
                             : 'text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                         }`}
                       >
                         <FontAwesomeIcon
                           icon={item.icon}
-                          className={`${!isOpen?"w-5 h-5":"w-4 h-4"} text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
+                          className={`${!isOpen?"w-5 h-5":"w-4 h-4"} text-two transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
                         />
                         <span className={`${!isOpen ? 'ml-7' : 'ms-3'} whitespace-nowrap`}>{item.label}</span>
                         <FontAwesomeIcon
@@ -82,14 +82,14 @@ const Sidebar = ({ isOpen }) => {
                                 to={subItem.to}
                                 className={`flex items-center p-2 text-sm rounded-lg group ${
                                   isActive(subItem.to)
-                                    ? 'bg-gray-50 font-medium text-purple-900 dark:bg-gray-700 dark:text-white'
+                                    ? 'font-medium bg-t-one text-two dark:bg-gray-700 dark:text-white'
                                     : 'text-gray-500 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                                 }`}
                               >
                         <FontAwesomeIcon
                           icon={faCircle}
                           className={`w-2 h-2 mr-2 ${
-                            isActive(subItem.to) ? 'text-purple-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'
+                            isActive(subItem.to) ? 'text-two dark:text-white' : 'text-gray-500 dark:text-gray-400'
                           }`}
                         />
                         <span>{subItem.label}</span>
@@ -104,13 +104,13 @@ const Sidebar = ({ isOpen }) => {
                       to={item.to}
                       className={`flex items-center p-2 rounded-lg group ${
                         isActive(item.to)
-                          ? 'text-purple-900 font-medium  bg-gray-200  dark:bg-gray-700 dark:text-gray-200'
+                          ? 'bg-t-one text-two font-medium   dark:bg-gray-700 dark:text-gray-200'
                           : 'text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                       }`}
                     >
                       <FontAwesomeIcon
                         icon={item.icon}
-                        className={`${!isOpen?"w-5 h-5":"w-4 h-4"} w-4 h-4 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
+                        className={`${!isOpen?"w-5 h-5":"w-4 h-4"} w-4 h-4 text-two transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
                       />
                       <span className={`${!isOpen ? 'ml-7' : 'ms-3'} whitespace-nowrap`}>
                         {item.label}

@@ -6,6 +6,7 @@ import {
     faEnvelope,
     faUsers,
     faBox,
+    faBars,faWrench ,faBuilding
   } from '@fortawesome/free-solid-svg-icons';
   
   // export const MenuItems = [
@@ -48,10 +49,11 @@ import {
       group: 'Configuration',
       items: [
         {
-          to: '/configuration/brand', 
-          icon: faClipboard,
-          label: 'Brand',
+          to: '/configuration/products/category', 
+          icon: faBars,
+          label: 'Categorys',
         },
+
         {
           to: '/configuration/engineer/type',
           icon: faClipboard,
@@ -63,37 +65,32 @@ import {
         //   label: 'Kanban',
         //   badge: 'Pro',
         // },
-        {
-          to: '/products',
-          icon: faBox,
-          label: 'Products',
-          isDropdown: true,
-          subItems: [
-            { to: '/configuration/products/category', label: 'Categorys' },
-            { to: '/configuration/products/product', label: 'products' },
-          ],
-        },
+        // {
+        //   to: '/products',
+        //   icon: faBox,
+        //   label: 'Products',
+        //   isDropdown: true,
+        //   subItems: [
+        //     { to: '/configuration/products/product', label: 'products' },
+        //   ],
+        // },
       ],
-    },
+    }
+    ,
     {
-      group: 'Pages',
+      group: 'Equipment',
       items: [
         {
-          to: '/pages/form/layout',
-          icon: faDashboard,
-          label: 'Form Layout',
+          to: '/equipment/type', 
+          icon: faWrench,
+          label: 'Equipment Type',
         },
-        {
-          to: '/pages/table/basic',
-          icon: faDashboard,
-          label: 'Table Basic',
-        },
-        {
-          to: '/pages/dataTable/basic',
-          icon: faDashboard,
-          label: 'Data Table',
-        }
         
+        {
+          to: '/equipment/brand', 
+          icon: faBuilding,
+          label: 'Brand',
+        },
       ],
-    },
+    }
   ];

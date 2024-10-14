@@ -12,9 +12,29 @@ module.exports = {
           800: '#1E3A8A',
           900: '#3c50e0'
         },
-        zIndex: {
-          1400: '1400',
+        'one': '#DDA229',
+        'two': '#5FAA43',
+        myorange:{
+          100:"#DDA229",
+          80:"#ebc881",
+          50:"#f0d59f",
+          20:"#f0d59f57"
         },
+        mygreen:{
+          100:"#5FAA43",
+          80:"#99cf84",
+          50:"#ccffb7"
+        }
+      },
+      backgroundColor: {
+        'one': '#DDA229',
+        'two': '#5FAA43',
+        't-one':"#5faa432b",
+        myorange:{
+          100:"#DDA229",
+          80:"#ebc881",
+           50:"#ccffb7"
+        }
       },
     },
   },

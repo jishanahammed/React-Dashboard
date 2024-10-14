@@ -8,10 +8,10 @@ import FormLayout from '../../../pages/Forms/FormLayout';
 import DataTableBasic from '../../../pages/Tables/BasicTable';
 import DataTablePagination from '../../../pages/Tables/DataTable';
 
-import Brand from '../../../pages/Configuration/brand';
+import Brand from '../../../pages/Equipment/brand';
 import EngineerType from '../../../pages/Configuration/engineerType';
 import Category from '../../../pages/Product/category';
-import product from '../../../pages/Product/product';
+import EquipmentType from '../../../pages/Equipment/EquipmentType';
 import Product from '../../../pages/Product/product';
 const AuthRouts = () => {
   return (
@@ -33,7 +33,7 @@ const AuthRouts = () => {
         } 
       />
       <Route 
-        path="/configuration/brand" 
+        path="/equipment/brand" 
         element={
           <ProtectedRoute>
             <Layout><Brand /></Layout>
@@ -58,6 +58,16 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
+
+      <Route 
+        path="/equipment/type" 
+        element={
+          <ProtectedRoute>
+            <Layout><EquipmentType /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
    <Route 
         path="/configuration/products/product" 
         element={

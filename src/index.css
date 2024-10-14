@@ -24,7 +24,14 @@ body {
   }
 
 }
+.sm-add-button{
+height: 40px;
+width: 40px;
+text-align: center;
+padding: 13px;
+border-radius: 50px;
 
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
