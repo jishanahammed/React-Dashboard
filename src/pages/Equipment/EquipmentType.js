@@ -97,12 +97,12 @@ const EquipmentType = () => {
                     <td className="border p-2 text-center">
                       <button
                         onClick={() => handleEditBrand(index)}
-                        className="text-blue-500 mr-2">
+                        className="text-mygreen-100 mr-2">
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
                       <button
                         onClick={() => handleDeleteBrand(index)}
-                        className="text-red-500">
+                        className="text-myorange-100">
                         <FontAwesomeIcon icon={faTrash} />
                       </button>
                     </td>

@@ -91,10 +91,10 @@ const EngineerType = () => {
                     <td className="border p-2">{engineer.name}</td>
                     <td className="border p-2">{engineer.description}</td>
                     <td className="border p-2 text-center">
-                      <button onClick={() => handleEditEngineer(index)} className="text-blue-500 mr-2">
+                      <button onClick={() => handleEditEngineer(index)} className="text-mygreen-100 mr-2">
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
-                      <button onClick={() => handleDeleteEngineer(index)} className="text-red-500">
+                      <button onClick={() => handleDeleteEngineer(index)} className="text-myorange-100">
                         <FontAwesomeIcon icon={faTrash} />
                       </button>
                     </td>
