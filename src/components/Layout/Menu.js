@@ -90,6 +90,12 @@ import {
           to: '/equipment/brand', 
           icon: faBuilding,
           label: 'Brand',
+        }
+        ,
+        {
+          to: '/equipment/equipment/items', 
+          icon: faBuilding,
+          label: 'Equipments',
         },
       ],
     }

@@ -12,6 +12,7 @@ import Brand from '../../../pages/Equipment/brand';
 import EngineerType from '../../../pages/Configuration/engineerType';
 import Category from '../../../pages/Product/category';
 import EquipmentType from '../../../pages/Equipment/EquipmentType';
+import Equipment from '../../../pages/Equipment/equipments';
 import Product from '../../../pages/Product/product';
 const AuthRouts = () => {
   return (
@@ -67,7 +68,14 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
-
+      <Route 
+        path="/equipment/equipment/items" 
+        element={
+          <ProtectedRoute>
+            <Layout><Equipment /></Layout>
+          </ProtectedRoute>
+        } 
+      />
    <Route 
         path="/configuration/products/product" 
         element={
