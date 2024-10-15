@@ -79,6 +79,7 @@ const EquipmentType = () => {
         <div className="card-body p-5 text-[15px]">
           {/* Table of Equipment */}
           {Equipment.length > 0 ? (
+             <div className="overflow-x-auto">
             <table className="min-w-full table-auto border-collapse">
               <thead>
                 <tr className="bg-myorange-20 dark:bg-gray-900">
@@ -110,6 +111,7 @@ const EquipmentType = () => {
                 ))}
               </tbody>
             </table>
+               </div>
           ) : (
             <p className="text-gray-500">No Equipment added yet.</p>
           )}

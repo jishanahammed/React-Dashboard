@@ -103,6 +103,7 @@ const Installations = () => {
 
                 <div className="card-body p-5 text-[14px]">
                     {/* Installations List Table */}
+                    <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr>
@@ -138,6 +139,7 @@ const Installations = () => {
                             ))}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 

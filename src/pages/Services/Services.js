@@ -111,6 +111,7 @@ const Services = () => {
 
                 <div className="card-body p-5 text-[14px]">
                     {/* Services List Table */}
+                    <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr>
@@ -148,6 +149,7 @@ const Services = () => {
                             ))}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 
@@ -252,7 +254,14 @@ const Services = () => {
                                         required
                                     ></textarea>
                                 </div>
-                                <div className="flex justify-end">
+                                <div className="mt-5 flex justify-end gap-3">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowModal(false)}
+                                        className="px-4 py-2 bg-myorange-100 text-white rounded hover:bg-gray-500"
+                                    >
+                                        Cancel
+                                    </button>
                                     <button type="submit" className="bg-mygreen-100 text-white rounded px-5 py-2 hover:bg-blue-600">
                                         {isEditing ? 'Update Service' : 'Add Service'}
                                     </button>

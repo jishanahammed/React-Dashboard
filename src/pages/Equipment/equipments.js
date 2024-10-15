@@ -114,6 +114,7 @@ const Equipment = () => {
 
                 <div className="card-body p-5 text-[14px]">
                     {equipmentData.length > 0 ? (
+                    <div className="overflow-x-auto">
                         <table className="min-w-full table-auto border-collapse">
                             <thead>
                                 <tr className="bg-myorange-20 dark:bg-gray-900">
@@ -155,6 +156,7 @@ const Equipment = () => {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
                     ) : (
                         <p className="text-gray-500">No equipment added yet.</p>
                     )}
@@ -268,7 +270,14 @@ const Equipment = () => {
                                             required
                                         />
                                     </div>
-                                    <div className="flex justify-end">
+                                    <div className="mt-5 flex justify-end gap-3">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsModalOpen(false)}
+                                        className="px-4 py-2 bg-myorange-100 text-white rounded hover:bg-gray-500"
+                                    >
+                                        Cancel
+                                    </button>
                                         <button
                                             type="submit"
                                             className="px-4 py-2 bg-mygreen-100 text-white rounded hover:bg-green-600 transition"
