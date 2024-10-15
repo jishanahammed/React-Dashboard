@@ -8,6 +8,11 @@ import FormLayout from '../../../pages/Forms/FormLayout';
 import DataTableBasic from '../../../pages/Tables/BasicTable';
 import DataTablePagination from '../../../pages/Tables/DataTable';
 
+import UserManager from '../../../pages/UserManagement/UserManager';
+import Profile from '../../../pages/UserManagement/profile';
+
+import ProjectType from '../../../pages/Project/ProjectType';
+
 import Brand from '../../../pages/Equipment/brand';
 import EngineerType from '../../../pages/Configuration/engineerType';
 import Category from '../../../pages/Product/category';
@@ -19,7 +24,7 @@ import Services from '../../../pages/Services/Services';
 
 import InstallationType from '../../../pages/Installation/installationType';
 import Installations from '../../../pages/Installation/installations';
-
+import Exclussions from '../../../pages/Exclussions/Exclussions';
 import Product from '../../../pages/Product/product';
 const AuthRouts = () => {
   return (
@@ -32,6 +37,25 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
+
+      <Route 
+        path="/user/list" 
+        element={
+          <ProtectedRoute>
+            <Layout><UserManager /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+      <Route 
+        path="/profile" 
+        element={
+          <ProtectedRoute>
+            <Layout><Profile /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+      
       <Route 
         path="/kanban" 
         element={
@@ -57,7 +81,14 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
-
+  <Route 
+        path="/configuration/project/type" 
+        element={
+          <ProtectedRoute>
+            <Layout><ProjectType /></Layout>
+          </ProtectedRoute>
+        } 
+      />
       <Route 
         path="/configuration/products/category" 
         element={
@@ -118,6 +149,14 @@ const AuthRouts = () => {
         element={
           <ProtectedRoute>
             <Layout><Installations /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+    <Route 
+        path="/exclussions/exclussions" 
+        element={
+          <ProtectedRoute>
+            <Layout><Exclussions /></Layout>
           </ProtectedRoute>
         } 
       />

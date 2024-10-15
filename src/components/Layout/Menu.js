@@ -3,35 +3,11 @@
 import {
     faDashboard,
     faClipboard,
-    faEnvelope,
-    faUsers,
-    faBox,
+    faEnvelope,faExclamationTriangle  ,
+    faUsers,faCalendarAlt ,
+    faBox,faProjectDiagram ,faTools ,
     faBars,faWrench ,faBuilding,faCog ,faCoffee 
   } from '@fortawesome/free-solid-svg-icons';
-  
-  // export const MenuItems = [
-  //   {
-  //     to: '/dashboard',
-  //     icon: faDashboard,
-  //     label: 'Dashboard',
-  //   },
-  //   {
-  //     to: '/kanban',
-  //     icon: faClipboard,
-  //     label: 'Kanban',
-  //     badge: 'Pro',
-  //   },
-
-  //   {
-  //     to: '/products',
-  //     icon: faBox,
-  //     label: 'Products',
-  //     isDropdown: true,
-  //     subItems: [
-  //       { to: '/products/electronics', label: 'Electronics' },
-  //     ],
-  //   },
-  // ];
   
 
   export const MenuItems = [
@@ -42,6 +18,11 @@ import {
           to: '/dashboard',
           icon: faDashboard,
           label: 'Dashboard',
+        },
+        {
+          to: '/user/list',
+          icon: faUsers,
+          label: 'User Manager',
         }
       ]
     },
@@ -49,16 +30,12 @@ import {
       group: 'Configuration',
       items: [
         {
-          to: '/configuration/products/category', 
-          icon: faBars,
-          label: 'Categorys',
+          to: '/configuration/project/type', 
+          icon: faProjectDiagram ,
+          label: 'Project Type',
         },
 
-        {
-          to: '/configuration/engineer/type',
-          icon: faClipboard,
-          label: 'Engineer Type',
-        },
+        
         // {
         //   to: '/kanban',
         //   icon: faClipboard,
@@ -94,40 +71,42 @@ import {
         ,
         {
           to: '/equipment/equipment/items', 
-          icon: faBuilding,
+          icon: faTools,
           label: 'Equipments',
         },
       ],
     }
     ,
     {
-      group: 'Services',
+      group: 'Other Services',
       items: [
         {
-          to: '/services/type', 
-          icon: faWrench,
-          label: 'Services Type',
+          to: '/configuration/engineer/type',
+          icon: faClipboard,
+          label: 'Engineer Type',
         },
+        // {
+        //   to: '/services/type', 
+        //   icon: faWrench,
+        //   label: 'Services Type',
+        // },
         {
           to: "/services/services" , 
           icon: faCog ,
-          label: 'Services',
-        }
-      ],
-    },
-    {
-      group: 'Installation',
-      items: [
-        {
-          to: "/installation/type" , 
-          icon: faWrench,
-          label: 'Installation Type',
+          label: 'FE Services',
         },
         {
           to:"/installation/installations", 
-          icon: faCoffee  ,
+          icon: faCalendarAlt   ,
           label: 'Installations',
+        },
+        {
+          to:"/exclussions/exclussions", 
+          icon: faExclamationTriangle,
+          label: 'Exclussions',
         }
       ],
-    }
+    },
+    
+  
   ];

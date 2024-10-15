@@ -3,27 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
-const installationsTypes = [
-    { value: 'Residential Installation', label: 'Residential Installation' },
-    { value: 'Commercial Installation', label: 'Commercial Installation' },
-    { value: 'Industrial Installation', label: 'Industrial Installation' },
+const demoExclussions = [
+    { id: 1, name: 'Exclussion 1', rate: '150', unit: 'Hours', description: 'Description 1' },
+    { id: 2, name: 'Exclussion 2', rate: '400', unit: 'Days', description: 'Description 2' },
 ];
 
-const demoInstallations = [
-    { id: 1, name: 'Installation 1',  rate: '200', unit: 'Hours', region: 'North', description: 'Description 1' },
-    { id: 2, name: 'Installation 2', rate: '350', unit: 'Days', region: 'South', description: 'Description 2' },
-];
-
-const Installations = () => {
+const Exclussions = () => {
     const [formData, setFormData] = useState({
         name: '',
-        installationsType: '',
         rate: '',
         unit: '',
-        region: '',
         description: '',
     });
-    const [installationsList, setInstallationsList] = useState(demoInstallations);
+    const [exclussionsList, setExclussionsList] = useState(demoExclussions);
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editingId, setEditingId] = useState(null);
@@ -37,16 +29,16 @@ const Installations = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditing) {
-            // Update existing installation
-            setInstallationsList(installationsList.map(installation => (installation.id === editingId ? { ...formData, id: editingId } : installation)));
-            setMessage('Installation updated successfully!');
+            // Update existing exclussion
+            setExclussionsList(exclussionsList.map(exclussion => (exclussion.id === editingId ? { ...formData, id: editingId } : exclussion)));
+            setMessage('Exclussion updated successfully!');
         } else {
-            // Add new installation
-            setInstallationsList([...installationsList, { ...formData, id: installationsList.length + 1 }]);
-            setMessage('Installation added successfully!');
+            // Add new exclussion
+            setExclussionsList([...exclussionsList, { ...formData, id: exclussionsList.length + 1 }]);
+            setMessage('Exclussion added successfully!');
         }
         resetForm();
-        setShowModal(false); // Close modal after adding/updating installation
+        setShowModal(false); // Close modal after adding/updating exclussion
     };
 
     const resetForm = () => {
@@ -54,24 +46,23 @@ const Installations = () => {
             name: '',
             rate: '',
             unit: '',
-            region: '',
             description: '',
         });
         setIsEditing(false);
         setEditingId(null);
     };
 
-    const deleteInstallation = (id) => {
-        const confirmDelete = window.confirm('Are you sure you want to delete this installation?');
+    const deleteExclussion = (id) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this exclussion?');
         if (confirmDelete) {
-            setInstallationsList(installationsList.filter(installation => installation.id !== id));
-            setMessage('Installation deleted successfully!');
+            setExclussionsList(exclussionsList.filter(exclussion => exclussion.id !== id));
+            setMessage('Exclussion deleted successfully!');
         }
     };
 
-    const handleEdit = (installation) => {
-        setFormData(installation);
-        setEditingId(installation.id);
+    const handleEdit = (exclussion) => {
+        setFormData(exclussion);
+        setEditingId(exclussion.id);
         setIsEditing(true);
         setShowModal(true);
     };
@@ -88,10 +79,10 @@ const Installations = () => {
 
     return (
         <>
-            <Breadcrumb pageName="Installations" currentPage="Installations" />
+            <Breadcrumb pageName="Exclussions" currentPage="Exclussions" />
             <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900">
                 <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">Installations List</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">Exclussions List</h2>
                     <button
                         className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white"
                         onClick={() => setShowModal(true)}
@@ -101,52 +92,50 @@ const Installations = () => {
                 </div>
 
                 <div className="card-body p-5 text-[14px]">
-                    {/* Installations List Table */}
+                    {/* Exclussions List Table */}
                     <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white border border-gray-300">
-                        <thead>
-                            <tr>
-                                <th className="border p-2 text-left">SL</th>
-                                <th className="border p-2 text-left">Name</th>
-                                <th className="border p-2 text-left">Rate</th>
-                                <th className="border p-2 text-left">Unit</th>
-                                <th className="border p-2 text-left">Region</th>
-                                <th className="border p-2 text-left">Description</th>
-                                <th className="border p-2 text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {installationsList.map((installation, index) => (
-                                <tr key={installation.id}>
-                                    <td className="border p-2">{index + 1}</td>
-                                    <td className="border p-2">{installation.name}</td>
-                                    <td className="border p-2">{installation.rate}</td>
-                                    <td className="border p-2">{installation.unit}</td>
-                                    <td className="border p-2">{installation.region}</td>
-                                    <td className="border p-2">{installation.description}</td>
-                                    <td className="border p-2 flex justify-end">
-                                        <button className="text-mygreen-100 mr-3" onClick={() => handleEdit(installation)}>
-                                            <FontAwesomeIcon icon={faEdit} />
-                                        </button>
-                                        <button className="text-myorange-100" onClick={() => deleteInstallation(installation.id)}>
-                                            <FontAwesomeIcon icon={faTrash} />
-                                        </button>
-                                    </td>
+                        <table className="min-w-full bg-white border border-gray-300">
+                            <thead>
+                                <tr>
+                                    <th className="border p-2 text-left">SL</th>
+                                    <th className="border p-2 text-left">Name</th>
+                                    <th className="border p-2 text-left">Rate</th>
+                                    <th className="border p-2 text-left">Unit</th>
+                                    <th className="border p-2 text-left">Description</th>
+                                    <th className="border p-2 text-right">Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {exclussionsList.map((exclussion, index) => (
+                                    <tr key={exclussion.id}>
+                                        <td className="border p-2">{index + 1}</td>
+                                        <td className="border p-2">{exclussion.name}</td>
+                                        <td className="border p-2">{exclussion.rate}</td>
+                                        <td className="border p-2">{exclussion.unit}</td>
+                                        <td className="border p-2">{exclussion.description}</td>
+                                        <td className="border p-2 flex justify-end">
+                                            <button className="text-mygreen-100 mr-3" onClick={() => handleEdit(exclussion)}>
+                                                <FontAwesomeIcon icon={faEdit} />
+                                            </button>
+                                            <button className="text-myorange-100" onClick={() => deleteExclussion(exclussion.id)}>
+                                                <FontAwesomeIcon icon={faTrash} />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            {/* Modal for Adding/Editing Installation */}
+            {/* Modal for Adding/Editing Exclussion */}
             {showModal && (
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center" style={{ zIndex: 1900 }}>
                     <div className="bg-white rounded-lg w-full sm:w-96 md:w-[32rem] lg:w-[40rem]">
                         <div className="border-b border-gray-300 p-3">
                             <div className="flex justify-between">
-                                <h3 className="text-lg font-bold text-mygreen-100">{isEditing ? 'Edit Installation' : 'Add Installation'}</h3>
+                                <h3 className="text-lg font-bold text-mygreen-100">{isEditing ? 'Edit Exclussion' : 'Add Exclussion'}</h3>
                                 <button onClick={() => setShowModal(false)} className="px-3 py-1 bg-orange-600 text-white rounded hover:bg-gray-400">
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
@@ -161,12 +150,11 @@ const Installations = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        placeholder="Installation Name"
+                                        placeholder="Exclussion Name"
                                         className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
                                         required
                                     />
                                 </div>
-           
                                 <div className="mb-3">
                                     <input
                                         type="number"
@@ -185,17 +173,6 @@ const Installations = () => {
                                         value={formData.unit}
                                         onChange={handleInputChange}
                                         placeholder="Unit"
-                                        className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
-                                        required
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <input
-                                        type="text"
-                                        name="region"
-                                        value={formData.region}
-                                        onChange={handleInputChange}
-                                        placeholder="Region"
                                         className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
                                         required
                                     />
@@ -222,7 +199,7 @@ const Installations = () => {
                                         type="submit"
                                         className="px-4 py-2 bg-mygreen-100 text-white rounded hover:bg-mygreen-80"
                                     >
-                                        {isEditing ? 'Update Installation' : 'Add Installation'}
+                                        {isEditing ? 'Update Exclussion' : 'Add Exclussion'}
                                     </button>
                                 </div>
                             </form>
@@ -233,7 +210,7 @@ const Installations = () => {
 
             {/* Success Message */}
             {message && (
-                <div className="fixed top-10 right-10 bg-mygreen-100 text-white px-4 py-2 z-50 rounded">
+                <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded">
                     {message}
                 </div>
             )}
@@ -241,4 +218,4 @@ const Installations = () => {
     );
 };
 
-export default Installations;
+export default Exclussions;

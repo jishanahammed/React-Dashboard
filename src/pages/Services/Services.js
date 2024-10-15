@@ -16,8 +16,8 @@ const engineers = [
 ];
 
 const demoServices = [
-    { id: 1, name: 'Service 1', servicesType: 'FE Service', engineer: 'Engineering', rate: '100', unit: 'Hours', projectSize: 'Medium', description: 'Description 1' },
-    { id: 2, name: 'Service 2', servicesType: 'Installation Service', engineer: 'Contractor', rate: '150', unit: 'Days', projectSize: 'Large', description: 'Description 2' },
+    { id: 1, name: 'Service 1',  engineer: 'Engineering', rate: '100', unit: 'Hours', projectSize: 'Medium', description: 'Description 1' },
+    { id: 2, name: 'Service 2',  engineer: 'Contractor', rate: '150', unit: 'Days', projectSize: 'Large', description: 'Description 2' },
 ];
 
 const Services = () => {
@@ -97,10 +97,10 @@ const Services = () => {
 
     return (
         <>
-            <Breadcrumb pageName="Services" currentPage="Services" />
+            <Breadcrumb pageName="FE Services" currentPage="FE Services" />
             <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900">
                 <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">Services List</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">FE Services List</h2>
                     <button
                         className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white"
                         onClick={() => setShowModal(true)}
@@ -117,7 +117,6 @@ const Services = () => {
                             <tr>
                                 <th className="border p-2 text-left">SL</th>
                                 <th className="border p-2 text-left">Name</th>
-                                <th className="border p-2 text-left">Service Type</th>
                                 <th className="border p-2 text-left">Engineer</th>
                                 <th className="border p-2 text-left">Rate</th>
                                 <th className="border p-2 text-left">Unit</th>
@@ -131,7 +130,6 @@ const Services = () => {
                                 <tr key={service.id}>
                                     <td className="border p-2">{index + 1}</td>
                                     <td className="border p-2">{service.name}</td>
-                                    <td className="border p-2">{service.servicesType}</td>
                                     <td className="border p-2">{service.engineer}</td>
                                     <td className="border p-2">{service.rate}</td>
                                     <td className="border p-2">{service.unit}</td>
@@ -159,7 +157,7 @@ const Services = () => {
                     <div className="bg-white rounded-lg w-full sm:w-96 md:w-[32rem] lg:w-[40rem]">
                         <div className="border-b border-gray-300 p-3">
                             <div className="flex justify-between">
-                                <h3 className="text-lg font-bold text-mygreen-100">{isEditing ? 'Edit Service' : 'Add Service'}</h3>
+                                <h3 className="text-lg font-bold text-mygreen-100">{isEditing ? 'Edit FE Service' : 'Add FE Service'}</h3>
                                 <button onClick={() => setShowModal(false)} className="px-3 py-1 bg-orange-600 text-white rounded hover:bg-gray-400">
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
@@ -174,12 +172,12 @@ const Services = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        placeholder="Service Name"
+                                        placeholder="FE Service Name"
                                         className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
                                         required
                                     />
                                 </div>
-                                <div className="mb-3">
+                                {/* <div className="mb-3">
                                     <select
                                         name="servicesType"
                                         value={formData.servicesType}
@@ -194,7 +192,7 @@ const Services = () => {
                                             </option>
                                         ))}
                                     </select>
-                                </div>
+                                </div> */}
                                 <div className="mb-3">
                                     <select
                                         name="engineer"
@@ -263,7 +261,7 @@ const Services = () => {
                                         Cancel
                                     </button>
                                     <button type="submit" className="bg-mygreen-100 text-white rounded px-5 py-2 hover:bg-blue-600">
-                                        {isEditing ? 'Update Service' : 'Add Service'}
+                                        {isEditing ? 'Update FE Service' : 'Add FE Service'}
                                     </button>
                                 </div>
                             </form>
