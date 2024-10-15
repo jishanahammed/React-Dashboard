@@ -13,6 +13,13 @@ import EngineerType from '../../../pages/Configuration/engineerType';
 import Category from '../../../pages/Product/category';
 import EquipmentType from '../../../pages/Equipment/EquipmentType';
 import Equipment from '../../../pages/Equipment/equipments';
+
+import ServicesType from '../../../pages/Services/ServicesType';
+import Services from '../../../pages/Services/Services';
+
+import InstallationType from '../../../pages/Installation/installationType';
+import Installations from '../../../pages/Installation/installations';
+
 import Product from '../../../pages/Product/product';
 const AuthRouts = () => {
   return (
@@ -76,6 +83,47 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
+
+<Route 
+        path="/services/type" 
+        element={
+          <ProtectedRoute>
+            <Layout><ServicesType /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+
+    <Route 
+        path="/services/services" 
+        element={
+          <ProtectedRoute>
+            <Layout><Services /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+<Route 
+        path="/installation/type" 
+        element={
+          <ProtectedRoute>
+            <Layout><InstallationType /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+
+    <Route 
+        path="/installation/installations" 
+        element={
+          <ProtectedRoute>
+            <Layout><Installations /></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+
+
    <Route 
         path="/configuration/products/product" 
         element={

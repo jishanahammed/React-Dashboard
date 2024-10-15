@@ -5,8 +5,14 @@ import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
 // Sample data
 const initialEquipmentData = [
-    { id: 1, name: 'Excavator', equipmentType: 'Heavy', brand: 'CAT', model: '320D', unit: 'Each', unitCost: 30000, description: 'Excavation machine', size: '20 Ton' },
-    { id: 2, name: 'Bulldozer', equipmentType: 'Heavy', brand: 'Komatsu', model: 'D65', unit: 'Each', unitCost: 40000, description: 'Bulldozer for earthmoving', size: '25 Ton' },
+    { id: 1, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Risen', model: 'RISEN RSM40-8-415M', unit: 'Each', unitCost: 91, description: '415 Watt panels\n25 Year Product & 25 Year Linear Performance Warranty', size: '415' },
+    { id: 2, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Risen', model: 'RSM108-9-440N', unit: 'Each', unitCost: 88, description: '440 Watt panels\n25 Year Product Warranty & 30 Year Linear Performance Warranty', size: '440' },
+    { id: 3, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Suntech', model: 'STP440S-C54/Nshm', unit: 'Each', unitCost: 88, description: '440 Watt panels\n25 Year Product Warranty &  25 Year Linear Performance Warranty', size: '440' },
+    { id: 4, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Suntech', model: 'STP415S-C54/Umhm', unit: 'Each', unitCost: 91, description: '415 Watt panels\n25 Year Product Warranty & 25 Year Performance Warranty', size: '415' },
+    { id: 5, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Jinko', model: 'JKM530M-72HL4-V', unit: 'Each', unitCost: 106, description: 'Tiger P-Type 530 Watt panels\n12 Year Product Warranty & 25 Year Linear Performance Warranty', size: '530' },
+    { id: 6, name: 'Inverter', equipmentType: 'Solar-Equipment', brand: 'Sungrow', model: 'SG50CX', unit: 'Each', unitCost: 3835, description: 'Multi-MPPT Inverter\n3-Phase 50kW of Inverter Power\nSungrow Power Supply Co., ', size: '50000' },
+    { id: 7, name: 'Inverter', equipmentType: 'Solar-Equipment', brand: 'Sungrow', model: 'SG30CX', unit: 'Each', unitCost: 3090, description: 'Multi-MPPT Inverter\n3-Phase 29.9kW of Inverter Power\nSungrow Power Supply Co., ', size: '30000' },
+    { id: 8, name: 'Inverter', equipmentType: 'Solar-Equipment', brand: 'Sungrow', model: 'SG110CX', unit: 'Each', unitCost: 6999, description: '3-Phase 110kW of Inverter Power\nSungrow Power Supply Co.', size: '110000' },
 ];
 
 const Equipment = () => {
@@ -28,10 +34,10 @@ const Equipment = () => {
     });
 
     // Equipment types and brands
-    const equipmentTypes = ['Heavy', 'SolarEquipment', 'Agricultural'];
+    const equipmentTypes = ['Heavy', 'Solar-Equipment', 'Agricultural'];
     const brandsData = {
         Heavy: ['CAT', 'Komatsu', 'Hitachi'],
-        SolarEquipment: ['Risen', 'Suntech', 'JA Solar'],
+        SolarEquipment: ['Risen', 'Suntech','Jinko', 'Sungrow'],
         Agricultural: ['John Deere', 'Kubota', 'Massey Ferguson'],
     };
 
@@ -106,33 +112,37 @@ const Equipment = () => {
                     </button>
                 </div>
 
-                <div className="card-body p-5 text-[15px]">
+                <div className="card-body p-5 text-[14px]">
                     {equipmentData.length > 0 ? (
                         <table className="min-w-full table-auto border-collapse">
                             <thead>
                                 <tr className="bg-myorange-20 dark:bg-gray-900">
+                                    <th className="border p-2 text-left">SL</th>
                                     <th className="border p-2 text-left">Name</th>
                                     <th className="border p-2 text-left">Equipment Type</th>
                                     <th className="border p-2 text-left">Brand</th>
                                     <th className="border p-2 text-left">Model</th>
                                     <th className="border p-2 text-left">Unit</th>
                                     <th className="border p-2 text-left">Unit Cost</th>
-                                    <th className="border p-2 text-left">Description</th>
                                     <th className="border p-2 text-left">Size/Capacity</th>
+                                    <th className="border p-2 text-left">Description</th>
+                                   
                                     <th className="border p-2 text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {equipmentData.map((item) => (
+                                {equipmentData.map((item,index) => (
                                     <tr key={item.id} className="border-b">
+                                        <td className="border p-2">{index+1}</td>
                                         <td className="border p-2">{item.name}</td>
                                         <td className="border p-2">{item.equipmentType}</td>
                                         <td className="border p-2">{item.brand}</td>
                                         <td className="border p-2">{item.model}</td>
                                         <td className="border p-2">{item.unit}</td>
                                         <td className="border p-2">{item.unitCost}</td>
-                                        <td className="border p-2">{item.description}</td>
                                         <td className="border p-2">{item.size}</td>
+                                        <td className="border p-2">{item.description}</td>
+                                   
                                         <td className="border p-2 text-center">
                                             <button onClick={() => handleEdit(item)} className="text-mygreen-100 mr-2">
                                                 <FontAwesomeIcon icon={faEdit} />

@@ -6,7 +6,7 @@ import {
     faEnvelope,
     faUsers,
     faBox,
-    faBars,faWrench ,faBuilding
+    faBars,faWrench ,faBuilding,faCog ,faCoffee 
   } from '@fortawesome/free-solid-svg-icons';
   
   // export const MenuItems = [
@@ -97,6 +97,37 @@ import {
           icon: faBuilding,
           label: 'Equipments',
         },
+      ],
+    }
+    ,
+    {
+      group: 'Services',
+      items: [
+        {
+          to: '/services/type', 
+          icon: faWrench,
+          label: 'Services Type',
+        },
+        {
+          to: "/services/services" , 
+          icon: faCog ,
+          label: 'Services',
+        }
+      ],
+    },
+    {
+      group: 'Installation',
+      items: [
+        {
+          to: "/installation/type" , 
+          icon: faWrench,
+          label: 'Installation Type',
+        },
+        {
+          to:"/installation/installations", 
+          icon: faCoffee  ,
+          label: 'Installations',
+        }
       ],
     }
   ];

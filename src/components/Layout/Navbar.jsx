@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
-
+import logo from '../../assets/light.png';
 const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
   const navigate = useNavigate();
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -116,8 +116,8 @@ const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
                </svg>
             </button>
             <a href="#" className="flex ms-2 md:me-24">
-              <img src="light.png" className="h-8 me-3" alt=" FreeEngineer Logo" />
-              <span className="hidden text-one sm:block self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <img src={logo} className="h-8 me-3" alt=" FreeEngineer Logo" />
+              <span className="hidden text-one sm:block self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                 Free Engineer
               </span>
 
