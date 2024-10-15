@@ -163,8 +163,8 @@ const Equipment = () => {
                 </div>
 
                 {isModalOpen && (
-                    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center" style={{ zIndex: 1900 }}>
-                        <div className="bg-white rounded-lg w-full sm:w-96 md:w-[32rem] lg:w-[40rem]">
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center"  style={{ zIndex: 1900 }}>
+                        <div className="bg-white rounded-lg   sm:w-96 md:w-[32rem] lg:w-[40rem]">
                             <div className="border-b border-gray-300 p-3">
                                 <div className="flex justify-between">
                                     <h3 className="text-lg font-bold text-mygreen-100">{editMode ? 'Update Equipment' : 'Add Equipment'}</h3>
