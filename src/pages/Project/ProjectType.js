@@ -5,10 +5,10 @@ import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
 const ProjectType = () => {
   const [projects, setProjects] = useState([
-    { name: 'Large Project', size: '1000 sqft', marginValue: '15%' },
+    { name: 'Large Project', sizeMin: '800 sqft', sizeMax: '1000 sqft', marginValue: '15%' },
   ]);
 
-  const [newProject, setNewProject] = useState({ name: '', size: '', marginValue: '' });
+  const [newProject, setNewProject] = useState({ name: '', sizeMin: '', sizeMax: '', marginValue: '' });
   const [editingIndex, setEditingIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setError] = useState(''); // For validation error message
@@ -34,7 +34,7 @@ const ProjectType = () => {
       setProjects([...projects, newProject]);
     }
 
-    setNewProject({ name: '', size: '', marginValue: '' });
+    setNewProject({ name: '', sizeMin: '', sizeMax: '', marginValue: '' });
     setIsModalOpen(false);
   };
 
@@ -45,7 +45,7 @@ const ProjectType = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setEditingIndex(null);
-    setNewProject({ name: '', size: '', marginValue: '' });
+    setNewProject({ name: '', sizeMin: '', sizeMax: '', marginValue: '' });
     setError('');
   };
 
@@ -85,7 +85,8 @@ const ProjectType = () => {
                   <tr className="bg-myorange-20 dark:bg-gray-900">
                     <th className="border p-2 text-left">SL</th>
                     <th className="border p-2 text-left">Name</th>
-                    <th className="border p-2 text-left">Size</th>
+                    <th className="border p-2 text-left">Size Minimum</th>
+                    <th className="border p-2 text-left">Size Maximum</th>
                     <th className="border p-2 text-left">Margin Value</th>
                     <th className="border p-2 text-center">Actions</th>
                   </tr>
@@ -95,7 +96,8 @@ const ProjectType = () => {
                     <tr key={index} className="border-b">
                       <td className="border p-2 text-left">{index + 1}</td>
                       <td className="border p-2">{project.name}</td>
-                      <td className="border p-2">{project.size}</td>
+                      <td className="border p-2">{project.sizeMin}</td>
+                      <td className="border p-2">{project.sizeMax}</td>
                       <td className="border p-2">{project.marginValue}</td>
                       <td className="border p-2 text-center">
                         <button
@@ -151,10 +153,21 @@ const ProjectType = () => {
                 <div className="mb-3">
                   <input
                     type="text"
-                    name="size"
-                    value={newProject.size}
+                    name="sizeMin"
+                    value={newProject.sizeMin}
                     onChange={handleInputChange}
-                    placeholder="Project Size"
+                    placeholder="Project Size Minimum"
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="sizeMax"
+                    value={newProject.sizeMax}
+                    onChange={handleInputChange}
+                    placeholder="Project Size Maximum"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
                   />
                 </div>

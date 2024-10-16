@@ -27,15 +27,20 @@ import {
       ]
     },
     {
-      group: 'Configuration',
+      group: 'Project Configuration',
       items: [
         {
           to: '/configuration/project/type', 
           icon: faProjectDiagram ,
           label: 'Project Type',
         },
-
+        {
+          to:"/configuration/company" , 
+          icon: faBuilding ,
+          label: 'Company',
+        },
         
+     
         // {
         //   to: '/kanban',
         //   icon: faClipboard,
@@ -98,7 +103,7 @@ import {
         {
           to:"/installation/installations", 
           icon: faCalendarAlt   ,
-          label: 'Installations',
+          label: 'Installation Services',
         },
         {
           to:"/exclussions/exclussions", 

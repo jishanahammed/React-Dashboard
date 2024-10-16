@@ -12,6 +12,10 @@ import UserManager from '../../../pages/UserManagement/UserManager';
 import Profile from '../../../pages/UserManagement/profile';
 
 import ProjectType from '../../../pages/Project/ProjectType';
+import Company from '../../../pages/Project/Company';
+import CompanyContract  from '../../../pages/Project/CompanyContract';
+import Project  from '../../../pages/Project/Project';
+
 
 import Brand from '../../../pages/Equipment/brand';
 import EngineerType from '../../../pages/Configuration/engineerType';
@@ -89,6 +93,32 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
+   <Route 
+        path="/configuration/company" 
+        element={
+          <ProtectedRoute>
+            <Layout><Company/></Layout>
+          </ProtectedRoute>
+        } 
+      />
+    <Route 
+        path="/configuration/company/contract" 
+        element={
+          <ProtectedRoute>
+            <Layout><CompanyContract/></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
+<Route 
+        path="/project" 
+        element={
+          <ProtectedRoute>
+            <Layout><Project/></Layout>
+          </ProtectedRoute>
+        } 
+      />
+
       <Route 
         path="/configuration/products/category" 
         element={
