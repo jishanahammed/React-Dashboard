@@ -1,0 +1,149 @@
+import React, { useState, useEffect } from 'react';
+import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
+import { EquipmentData,FEServices,Installation,Exclussions } from '../../assets/Demodata/demo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import EquipmentComponent from './EquipmentComponent';
+import FEServicescomponent from './FEServicescomponent';
+import InstallationComponent from './InstallationComponent';
+import ExclussionsComponent from './ExclussionsComponent';
+
+const NewQuotation = () => {
+  const [quoteNumber, setQuoteNumber] = useState('');
+  const [expiryDate, setExpiryDate] = useState('');
+  const [company, setCompany] = useState('');
+  const [project, setProject] = useState('');
+  const [selectEquipment, setSelectEquipment] = useState([]);
+  const [selectFEServices, setSelectFEServices] = useState([]);
+  const [selectInstallation, setselectInstallation] = useState([]);
+  const [selectExclussions, setSelectExclussions] = useState([]);
+
+  const companies = [
+    { id: 1, name: 'Company A' },
+    { id: 2, name: 'Company B' },
+    { id: 3, name: 'Company C' },
+  ];
+
+  const projectsData = {
+    1: ['Project A1', 'Project A2'],
+    2: ['Project B1', 'Project B2'],
+    3: ['Project C1', 'Project C2'],
+  };
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const randomQuoteNumber = `QTN-${Math.floor(100000 + Math.random() * 900000)}`;
+    setQuoteNumber(randomQuoteNumber);
+
+    const currentUtcDate = new Date().toISOString().split('T')[0];
+    setExpiryDate(currentUtcDate);
+  }, []);
+
+  useEffect(() => {
+    if (company) {
+      setProjects(projectsData[company] || []);
+    } else {
+      setProjects([]);
+    }
+  }, [company]);
+
+
+
+  return (
+    <div>
+      <Breadcrumb pageName="Quotation" currentPage="New Quotation" />
+      <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900">
+        <div className="card-header text-center dark:bg-gray-700 flex justify-center px-2 py-5 border-b border-gray-200">
+          <h2 className="text-xl md:text-1xl font-bold text-gray-700 dark:text-gray-100">New Quotation</h2>
+        </div>
+        <div className="card-body p-5 text-[15px]">
+          <form className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            {/* Quote Number */}
+            <div className="col-span-4 sm:col-span-1 mb-4">
+              <label className="block text-gray-700 dark:text-gray-100 font-bold mb-2">Quote Number</label>
+              <input
+                type="text"
+                value={quoteNumber}
+                className="w-full rounded border-[1.5px] border-stroke bg-gray-100 px-5 py-3 font-normal text-black outline-none transition"
+                readOnly
+              />
+            </div>
+
+            {/* Expiry Date */}
+            <div className="col-span-4 sm:col-span-1 mb-4">
+              <label className="block text-gray-700 dark:text-gray-100 font-bold mb-2">Expiry Date</label>
+              <input
+                type="date"
+                value={expiryDate}
+                onChange={(e) => setExpiryDate(e.target.value)}
+                className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+              />
+            </div>
+
+            {/* Company Dropdown */}
+            <div className="col-span-4 sm:col-span-1 mb-4">
+              <label className="block text-gray-700 dark:text-gray-100 font-bold mb-2">Company</label>
+              <select
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+              >
+                <option value="">Select a company</option>
+                {companies.map((comp) => (
+                  <option key={comp.id} value={comp.id}>
+                    {comp.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Project Dropdown */}
+            <div className="col-span-4 sm:col-span-1 mb-4">
+              <label className="block text-gray-700 dark:text-gray-100 font-bold mb-2">Project</label>
+              <select
+                value={project}
+                onChange={(e) => setProject(e.target.value)}
+                className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
+                disabled={!company}
+              >
+                <option value="">Select a project</option>
+                {projects.map((proj, index) => (
+                  <option key={index} value={proj}>
+                    {proj}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </form>
+        </div>
+
+        {/* Equipment Table */}
+        <div className="overflow-x-auto  p-5">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-myorange-20 dark:bg-gray-900">
+                <th className="border p-2 text-left">SL</th>
+                <th className="border p-2 text-left">Item Name</th>
+                <th className="border p-2 text-left">Brand</th>
+                <th className="border p-2 text-left">Model</th>
+                <th className="border p-2 text-left">Size</th>
+                <th className="border p-2 text-left">Unit Price</th>
+                <th className="border p-2 text-left">Quantity</th>
+                <th className="border p-2 text-center">Total Price</th>
+              </tr>
+            </thead>
+     
+            <EquipmentComponent EquipmentData={EquipmentData} selectEquipment={selectEquipment} setSelectEquipment ={setSelectEquipment} />
+            <FEServicescomponent FEServices={FEServices} selectFEServices={selectFEServices}  setSelectFEServices={setSelectFEServices}/>
+            <InstallationComponent Installation={Installation} selectInstallation={selectInstallation} setselectInstallation={setselectInstallation}/>
+            <ExclussionsComponent Exclussions={Exclussions} selectExclussions={selectExclussions} setSelectExclussions={setSelectExclussions}/>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default NewQuotation;

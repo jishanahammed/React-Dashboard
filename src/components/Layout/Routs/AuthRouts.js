@@ -30,6 +30,9 @@ import InstallationType from '../../../pages/Installation/installationType';
 import Installations from '../../../pages/Installation/installations';
 import Exclussions from '../../../pages/Exclussions/Exclussions';
 import Product from '../../../pages/Product/product';
+import NewQuotation from '../../../pages/Quotation/newQuotation';
+import QuotationList from '../../../pages/Quotation/QuotationList';
+
 const AuthRouts = () => {
   return (
     <Routes>
@@ -110,7 +113,7 @@ const AuthRouts = () => {
         } 
       />
 
-<Route 
+       <Route 
         path="/project" 
         element={
           <ProtectedRoute>
@@ -226,6 +229,24 @@ const AuthRouts = () => {
               </ProtectedRoute>
             } 
           />
+           <Route 
+            path="/pages/new/quotation" 
+            element={
+              <ProtectedRoute>
+                <Layout><NewQuotation/></Layout>
+              </ProtectedRoute>
+            } 
+          />
+           <Route 
+            path="/pages/quotation/list" 
+            element={
+              <ProtectedRoute>
+                <Layout><QuotationList/></Layout>
+              </ProtectedRoute>
+            } 
+          />
+
+
     </Routes>
 
     

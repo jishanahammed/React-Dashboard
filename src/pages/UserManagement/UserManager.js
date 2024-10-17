@@ -12,7 +12,6 @@ const UserManager = () => {
       email: 'admin@gmail.com',
       position: 'Engineer',
       department: 'Engineering',
-      roleName: 'Admin',
     },
   ]);
 
@@ -23,7 +22,6 @@ const UserManager = () => {
     email: '',
     position: '',
     department: '',
-    roleName: '',
   });
 
   const [editingIndex, setEditingIndex] = useState(null);
@@ -60,7 +58,6 @@ const UserManager = () => {
       email: '',
       position: '',
       department: '',
-      roleName: '',
     });
     setIsModalOpen(false);
   };
@@ -79,7 +76,6 @@ const UserManager = () => {
       email: '',
       position: '',
       department: '',
-      roleName: '',
     });
     setError('');
   };
@@ -97,10 +93,10 @@ const UserManager = () => {
 
   return (
     <>
-      <Breadcrumb pageName={"User Management"} currentPage={"User List"} />
+      <Breadcrumb pageName={"User List"} currentPage={"User List"} />
       <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900 ">
         <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">User Management</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">User List</h2>
           <button
             onClick={openModal}
             className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white">
@@ -121,7 +117,6 @@ const UserManager = () => {
                     <th className="border p-2 text-left">Email</th>
                     <th className="border p-2 text-left">Position</th>
                     <th className="border p-2 text-left">Department</th>
-                    <th className="border p-2 text-left">Role</th>
                     <th className="border p-2 text-center">Actions</th>
                   </tr>
                 </thead>
@@ -135,7 +130,6 @@ const UserManager = () => {
                       <td className="border p-2">{user.email}</td>
                       <td className="border p-2">{user.position}</td>
                       <td className="border p-2">{user.department}</td>
-                      <td className="border p-2">{user.roleName}</td>
                       <td className="border p-2 text-center">
                         <button
                           onClick={() => handleEditUser(index)}
@@ -235,22 +229,7 @@ const UserManager = () => {
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
                   />
                 </div>
-                <div className="mb-3">
-                  <select
-                    name="roleName"
-                    value={newUser.roleName}
-                    onChange={handleInputChange}
-                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition"
-                  >
-                    <option value="" disabled>Select Role</option>
-                    {roles.map((role, index) => (
-                      <option key={index} value={role}>{role}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {error && <p className="text-red-500">{error}</p>}
-
+              
                 <div className="flex justify-end">
                   <button
                     onClick={handleAddUser}

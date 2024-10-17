@@ -4,8 +4,8 @@ import {
     faDashboard,
     faClipboard,
     faEnvelope,faExclamationTriangle  ,
-    faUsers,faCalendarAlt ,
-    faBox,faProjectDiagram ,faTools ,
+    faUsers,faCalendarAlt ,faQuoteRight ,
+    faBox,faProjectDiagram ,faTools ,faQuoteLeft,
     faBars,faWrench ,faBuilding,faCog ,faCoffee 
   } from '@fortawesome/free-solid-svg-icons';
   
@@ -22,7 +22,7 @@ import {
         {
           to: '/user/list',
           icon: faUsers,
-          label: 'User Manager',
+          label: 'User List',
         }
       ]
     },
@@ -39,23 +39,6 @@ import {
           icon: faBuilding ,
           label: 'Company',
         },
-        
-     
-        // {
-        //   to: '/kanban',
-        //   icon: faClipboard,
-        //   label: 'Kanban',
-        //   badge: 'Pro',
-        // },
-        // {
-        //   to: '/products',
-        //   icon: faBox,
-        //   label: 'Products',
-        //   isDropdown: true,
-        //   subItems: [
-        //     { to: '/configuration/products/product', label: 'products' },
-        //   ],
-        // },
       ],
     }
     ,
@@ -113,5 +96,20 @@ import {
       ],
     },
     
+    {
+      group: 'Quotation',
+      items: [
+        {
+          to: "/pages/new/quotation" ,
+          icon: faQuoteLeft,
+          label: 'New Quotation',
+        },
+        {
+          to: "/pages/quotation/list" ,
+          icon: faBars,
+          label: 'Quotation List',
+        }
+      ],
+    }, 
   
   ];
