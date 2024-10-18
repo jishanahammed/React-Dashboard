@@ -4,7 +4,7 @@ import { faPlus, faEdit, faTrash, faTimes ,faEye,faFilePdf } from '@fortawesome/
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 import { quotation} from '../../assets/Demodata/demo';
 import { PDFDownloadLink,pdf } from '@react-pdf/renderer';
-import Invoice from '../ReportUtility/Invoice';
+import Invoice from '../ReportUtility/quInvoice';
 const QuotationList = () => {
 
     const handleOpenPdf = async () => {

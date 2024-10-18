@@ -23,7 +23,8 @@ const Footer = () => (
       This is a system generated invoice that doesn't require any signature.
     </Text>
     <Text>
-      Powered by: <Link  style={styles.link}>Free Engineer</Link>
+      Powered by: <Link src="https://www.solarpedia.com.au/"  style={styles.link} >https://www.solarpedia.com.au </Link> 
+     
     </Text>
   </View>
 );

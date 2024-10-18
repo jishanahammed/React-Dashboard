@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 'auto',
     borderStyle: '#99cf84',
     borderWidth: 1,
-    borderRightWidth: 1,
+    borderRightWidth: 0,
     borderBottomWidth: 0,
   },
   tableRow: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderTopWidth: 0,
     borderBottomWidth: 0,
-    borderRightWidth: 0,
+    borderRightWidth:1,
   },
   tableCell: {
     margin: 5,
@@ -194,7 +194,7 @@ termsContainer: {
   }
 });
 
-const Invoice = () => (
+const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selectFEServices,selectInstallation}) => (
  
   <Document>
     <Page size="A4" style={styles.page}>
@@ -210,7 +210,11 @@ const Invoice = () => (
 
 <View style={styles.date}>
   <View style={{ alignSelf: 'center' }}>
-    <Text style={{ borderWidth: 1, borderColor: '#ddd', padding: 4 }}>Quotation Date:{"10-17-2024"} </Text>
+    <Text style={{ borderWidth: 1, borderColor: '#ddd', padding: 4 }}>
+      <Text  style={{fontWeight:"bold"}}>  Quotation Date:{"2024-10-17"} </Text>
+     
+      <Text  style={{marginLeft:3,fontWeight:"bold"}}>  Expiry Date: {expiryDate} </Text>
+     </Text>
   </View>
 </View>
 
@@ -232,16 +236,15 @@ const Invoice = () => (
     <Text style={{fontSize: 12, fontWeight: '700', marginBottom: 5,borderBottomWidth: 1, width: 40, borderBottomColor: '#999999'}}>
   To
 </Text>
-
-     <Text style={styles.mb10}>  Name: Company Name</Text>
+     <Text style={styles.mb10}>  Quote No: {quoteNumber}</Text>
+     <Text style={styles.mb10}>  Name: {company}</Text>
       <Text style={styles.mb10}>  Email: oo1@company.com.au</Text>
       <Text style={styles.mb10}>  Mobile: +61 422 634 934 </Text>
-      <Text style={styles.mb10}>  Office : +613 91112431</Text>
       <Text style={styles.mb10}>  Address : 17 Granault Parade, Corio VIC 3214.</Text>
     </View>
   </View>
   <View style={styles.projectheader}>
-  <Text  style={{fontSize:9, fontWeight: '900'}}>  Project :Projet Name.</Text>
+  <Text  style={{fontSize:9, fontWeight: '900'}}>  Project : {project}.</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Project Type :Projet Type.</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Maximum Size :00.</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Minimum Size :00.</Text>
@@ -249,21 +252,13 @@ const Invoice = () => (
 
       <View style={styles.table}>
         <View style={styles.tableHeader} fixed>
-          <View style={styles.tableCol}>
+        <View style={{ ...styles.tableCol, width: '5%',textAlign:"center" }}>
             <Text style={styles.tableCell}>SL</Text>
           </View>
-          <View style={styles.tableCol}>
+          <View style={{ ...styles.tableCol, width: '75%',textAlign:"left" }}>
             <Text style={styles.tableCell}>Item Name</Text>
           </View>
-          <View style={styles.tableCol}>
-            <Text style={styles.tableCell}>Brand</Text>
-          </View>
-          <View style={styles.tableCol}>
-            <Text style={styles.tableCell}>Model</Text>
-          </View>
-          <View style={styles.tableCol}>
-            <Text style={styles.tableCell}>Size</Text>
-          </View>
+      
           <View style={styles.tableCol}>
             <Text style={styles.tableCell}>Price</Text>
           </View>
@@ -276,82 +271,120 @@ const Invoice = () => (
         </View>
 
 
-        <View style={styles.tableRow}>
+        <View style={{...styles.tableRow, borderRightWidth:1}}>
             <View >
               <Text style={styles.tableCell}>   Equipment</Text>
             </View>
         </View>
- <View style={styles.tableRow} >
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>1</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>Solar Panel </Text>
-</View>
+
+ {selectEquipment?.map((item, index) => (    
+ <View style={styles.tableRow} key={index} >
+
+    <View style={{...styles.tableCol,width: '5%',textAlign:"center" }}>
+      <Text style={styles.tableCell}>{index+1}</Text>
+    </View>
+
+    <View style={{...styles.tableCol,width: '75%',textAlign:"left" }}>
+    <Text style={styles.tableCell}> {item.name+" - " + item.brand + " - " + item.model} </Text>
+    </View>
+
+    <View style={styles.tableCol}>
+      <Text style={styles.tableCell}>{item?.unitCost.toFixed(2)}</Text>
+    </View>
 
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>Risen</Text>
+<Text style={styles.tableCell}>{item.quantity}</Text>
 </View>
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>RISEN RSM40-8-415M</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>415</Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>91</Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>1</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>91</Text>
+<Text style={styles.tableCell}>{item.totalPrice}</Text>
 </View>
 
 </View>
+  ))}
 
 
-
-<View style={styles.tableRow} >
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>2</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>Solar Panel </Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>Risen</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>RISEN RSM40-8-415M</Text>
-</View>
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>415</Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>91</Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>1</Text>
-</View>
-
-<View style={styles.tableCol}>
-<Text style={styles.tableCell}>91</Text>
-</View>
+<View style={{...styles.tableRow, borderRightWidth:1}}>
+     <View >
+     <Text style={styles.tableCell}> FE Services </Text>
+   </View>
 </View>
 
 
 
+{selectFEServices?.map((item, index) => (    
+ <View style={styles.tableRow} key={index} >
 
+    <View style={{...styles.tableCol,width: '5%',textAlign:"center" }}>
+      <Text style={styles.tableCell}>{index+1}</Text>
+    </View>
+
+    <View style={{...styles.tableCol,width: '75%',textAlign:"left" }}>
+    <Text style={styles.tableCell}> {item.name+" - " + item.engineer + " - " + item.projectSize} </Text>
+    </View>
+
+    <View style={styles.tableCol}>
+      <Text style={styles.tableCell}>{item.rate}</Text>
+    </View>
+
+<View style={styles.tableCol}>
+<Text style={styles.tableCell}>{item.quantity}</Text>
+</View>
+<View style={styles.tableCol}>
+<Text style={styles.tableCell}>{item.totalPrice}</Text>
+</View>
+
+</View>
+  ))}
+
+
+<View style={{...styles.tableRow, borderRightWidth:1}}>
+     <View >
+     <Text style={styles.tableCell}>  Installation Services</Text>
+   </View>
+</View>
+
+
+{selectInstallation?.map((item, index) => (    
+ <View style={styles.tableRow} key={index} >
+
+    <View style={{...styles.tableCol,width: '5%',textAlign:"center" }}>
+      <Text style={styles.tableCell}>{index+1}</Text>
+    </View>
+
+    <View style={{...styles.tableCol,width: '75%',textAlign:"left" }}>
+    <Text style={styles.tableCell}> {item.name} </Text>
+    </View>
+
+    <View style={styles.tableCol}>
+      <Text style={styles.tableCell}>{item.rate}</Text>
+    </View>
+
+<View style={styles.tableCol}>
+<Text style={styles.tableCell}>{item.quantity}</Text>
+</View>
+<View style={styles.tableCol}>
+<Text style={styles.tableCell}>{item.totalPrice}</Text>
+</View>
+
+</View>
+  ))}
+     
  </View>
 
 
+ <View style={{borderBottomWidth: 1, borderLeftWidth: 0, flexDirection: "row", justifyContent:"flex-end"}}>
+    <Text style={{...styles.tableCell, width: '90%', textAlign: "right"}}>Subtotal :</Text>
+    <Text style={{...styles.tableCell, width: '10%', textAlign: "left"}}> 10000</Text>
+</View>
 
+<View style={{borderBottomWidth: 1, borderLeftWidth: 0, flexDirection: "row", justifyContent: "flex-end"}}>
+    <Text style={{...styles.tableCell, width: '90%', textAlign: "right"}}>TOTAL GST 10% : 9000 </Text>
+    <Text style={{...styles.tableCell, width: '10%', textAlign: "left"}}> 5675</Text>
+</View>
+<View style={{borderBottomWidth: 1, borderLeftWidth: 0, flexDirection: "row", justifyContent: "flex-end"}}>
+    <Text style={{...styles.tableCell, width: '90%', textAlign: "right"}}>TOTAL AUD : </Text>
+    <Text style={{...styles.tableCell, width: '10%', textAlign: "left"}}> 9000</Text>
+</View>
 
 
 
@@ -377,4 +410,4 @@ const Invoice = () => (
   </Document>
 );
 
-export default Invoice;
+export default QUInvoice;

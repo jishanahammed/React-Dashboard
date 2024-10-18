@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 import { EquipmentData,FEServices,Installation,Exclussions } from '../../assets/Demodata/demo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes,faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import EquipmentComponent from './EquipmentComponent';
 import FEServicescomponent from './FEServicescomponent';
 import InstallationComponent from './InstallationComponent';
 import ExclussionsComponent from './ExclussionsComponent';
-
+import { PDFDownloadLink,pdf } from '@react-pdf/renderer';
+import Invoice from '../ReportUtility/quInvoice';
+import QUInvoice from '../ReportUtility/quInvoice';
 const NewQuotation = () => {
   const [quoteNumber, setQuoteNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
@@ -25,9 +27,8 @@ const NewQuotation = () => {
   ];
 
   const projectsData = {
-    1: ['Project A1', 'Project A2'],
-    2: ['Project B1', 'Project B2'],
-    3: ['Project C1', 'Project C2'],
+    1: ['Lovitt Tech'],
+    2: ['Minos structural Engg']
   };
 
   const [projects, setProjects] = useState([]);
@@ -48,7 +49,15 @@ const NewQuotation = () => {
     }
   }, [company]);
 
+  const handleOpenPdf = async () => {
+    const blob = await pdf(<QUInvoice quoteNumber={quoteNumber} expiryDate={expiryDate}
+      company={company} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices} selectInstallation={selectInstallation} />).toBlob();
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+  };
 
+  // Check if all required fields are filled
+  const isFormValid = expiryDate && company && project;
 
   return (
     <div>
@@ -119,31 +128,49 @@ const NewQuotation = () => {
         </div>
 
         {/* Equipment Table */}
-        <div className="overflow-x-auto  p-5">
+        <div className="overflow-x-auto p-5">
           <table className="min-w-full table-auto border-collapse">
             <thead>
               <tr className="bg-myorange-20 dark:bg-gray-900">
                 <th className="border p-2 text-left">SL</th>
                 <th className="border p-2 text-left">Item Name</th>
-                <th className="border p-2 text-left">Brand</th>
+                {/* <th className="border p-2 text-left">Brand</th>
                 <th className="border p-2 text-left">Model</th>
-                <th className="border p-2 text-left">Size</th>
+                <th className="border p-2 text-left">Size</th> */}
                 <th className="border p-2 text-left">Unit Price</th>
                 <th className="border p-2 text-left">Quantity</th>
                 <th className="border p-2 text-center">Total Price</th>
               </tr>
             </thead>
-     
-            <EquipmentComponent EquipmentData={EquipmentData} selectEquipment={selectEquipment} setSelectEquipment ={setSelectEquipment} />
-            <FEServicescomponent FEServices={FEServices} selectFEServices={selectFEServices}  setSelectFEServices={setSelectFEServices}/>
-            <InstallationComponent Installation={Installation} selectInstallation={selectInstallation} setselectInstallation={setselectInstallation}/>
-            <ExclussionsComponent Exclussions={Exclussions} selectExclussions={selectExclussions} setSelectExclussions={setSelectExclussions}/>
+
+            <EquipmentComponent EquipmentData={EquipmentData} selectEquipment={selectEquipment} setSelectEquipment={setSelectEquipment} />
+            <FEServicescomponent FEServices={FEServices} selectFEServices={selectFEServices} setSelectFEServices={setSelectFEServices} />
+            <InstallationComponent Installation={Installation} selectInstallation={selectInstallation} setselectInstallation={setselectInstallation} />
+            <ExclussionsComponent Exclussions={Exclussions} selectExclussions={selectExclussions} setSelectExclussions={setSelectExclussions} />
           </table>
         </div>
 
+        <div className='mt-5 mb-5 flex justify-center'>
+          <button
+            className={`ml-2 bg-mygreen-100 text-gray-100 px-2 py-3 rounded hover:text-gray-700 ${!isFormValid ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={!isFormValid}
+          >
+            <PDFDownloadLink document={<QUInvoice quoteNumber={quoteNumber} expiryDate={expiryDate}
+              company={company} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices}
+              selectInstallation={selectInstallation} />}
+              fileName={quoteNumber}>
+              {({ loading }) => loading ? 'Loading document...' : (
+                <div style={{ display: 'flex', alignItems: 'center' }} onClick={handleOpenPdf}>
+                  <span>Generate Quotation</span>
+                </div>
+              )}
+            </PDFDownloadLink>
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default NewQuotation;
+

@@ -54,7 +54,7 @@ const relodedata=()=>{
     <>
       <tbody>
         <tr className='bg-gray-100 border'>
-          <td className="p-2  font-semibold" colSpan={7}>
+          <td className="p-2  font-semibold" colSpan={4}>
             Equipment
           </td>
           <td className="flex  justify-end p-2">
@@ -72,10 +72,7 @@ const relodedata=()=>{
         {selectEquipment.map((item, index) => (
           <tr key={item.id} className="hover:bg-gray-100 transition-colors">
             <td className="border p-1 text-left">{index + 1}</td>
-            <td className="border p-1">{item.name}</td>
-            <td className="border p-1">{item.brand}</td>
-            <td className="border p-1">{item.model}</td>
-            <td className="border p-1">{item.size}</td>
+            <td className="border p-1"> {`${item.name} - ${item.brand} - ${item.model}`}</td>
             <td className="border p-1">{item.unitCost.toFixed(2)}</td>
             <td className="border p-1">
               <input
@@ -89,7 +86,7 @@ const relodedata=()=>{
           </tr>
         ))}
         <tr>
-          <td className="font-semibold border p-2 text-right" colSpan={7}>
+          <td className="font-semibold border p-2 text-right" colSpan={4}>
             Total Price:
           </td>
           <td className="font-semibold border p-1  text-left">{totalPrice.toFixed(2)}</td>
