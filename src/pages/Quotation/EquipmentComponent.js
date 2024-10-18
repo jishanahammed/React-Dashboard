@@ -155,3 +155,4 @@ const relodedata=()=>{
 };
 
 export default EquipmentComponent;
+
