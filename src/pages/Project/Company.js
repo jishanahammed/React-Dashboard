@@ -86,7 +86,7 @@ const Company = () => {
             <Breadcrumb pageName="Company" currentPage="Company" />
             <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900">
                 <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">Company List</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">Company List</h2>
                     <button
                         className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white"
                         onClick={() => setShowModal(true)}
@@ -99,7 +99,7 @@ const Company = () => {
                     <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
-                            <tr>
+                        <tr className="bg-myorange-100 text-gray-700 dark:bg-gray-900">
                                 <th className="border p-2 text-left">SL</th>
                                 <th className="border p-2 text-left">Name</th>
                                 <th className="border p-2 text-left">Address</th>

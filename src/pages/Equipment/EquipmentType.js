@@ -67,8 +67,8 @@ const EquipmentType = () => {
         currentPage={"Equipment Type List"}
       />
       <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900 ">
-        <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100">Equipment Type</h2>
+        <div className="card-header items-center bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">Equipment Type</h2>
           <button
             onClick={openModal}
             className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white">
@@ -82,7 +82,7 @@ const EquipmentType = () => {
              <div className="overflow-x-auto">
             <table className="min-w-full table-auto border-collapse">
               <thead>
-                <tr className="bg-myorange-20 dark:bg-gray-900">
+                <tr className="  bg-myorange-100 text-gray-700">
                   <th className="border p-2 text-left">SL</th>
                   <th className="border p-2 text-left">Name</th>
                   <th className="border p-2 text-left">Description</th>

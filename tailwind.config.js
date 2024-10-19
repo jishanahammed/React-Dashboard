@@ -12,27 +12,27 @@ module.exports = {
           800: '#1E3A8A',
           900: '#3c50e0'
         },
-        'one': '#DDA229',
-        'two': '#5FAA43',
+        'one': '#dda229d6',
+        'two': '#5e9448',
         myorange:{
-          100:"#DDA229",
-          80:"#ebc881",
+          100:"#dda229d6",
+          80:"#dda229d6",
           50:"#f0d59f",
           20:"#f0d59f57"
         },
         mygreen:{
-          100:"#5FAA43",
-          80:"#99cf84",
+          100:"#5e9448",
+          80:"#5e9448",
           50:"#ccffb7"
         }
       },
       backgroundColor: {
-        'one': '#DDA229',
-        'two': '#5FAA43',
+        'one': '#dda229d6',
+        'two': '#5E9448',
         't-one':"#5faa432b",
         myorange:{
-          100:"#DDA229",
-          80:"#ebc881",
+          100:"#dda229d6",
+          80:"#dda229d6",
            50:"#ccffb7"
         }
       },

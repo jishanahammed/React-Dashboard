@@ -42,7 +42,7 @@ const Sidebar = ({ isOpen }) => {
       className={`fixed top-0 left-0 z-50 ${!isOpen ? 'w-12 overflow-x-hidden' : 'w-64'} h-screen pt-16 transition-all bg-white border-r border-gray-100 dark:bg-gray-800 dark:border-gray-700`}
       aria-label="Sidebar"
     >
-      <div className={`h-full ${!isOpen?"px-1":'px-3 '} pb-4 overflow-y-auto bg-white dark:bg-gray-800`}>
+      <div className={`h-full ${!isOpen?"px-1":'px-3 '} pb-4 overflow-y-auto bg-white dark:bg-gray-800 scrollbar-custom`}>
         <ul className="space-y-2 text-[14px]">
           {MenuItems.map((group, groupIndex) => (
             <div
@@ -136,7 +136,8 @@ const Sidebar = ({ isOpen }) => {
       className={`top-0 left-0 mobilesidebar  ${!isOpen ? 'hidden' : 'w-64'} h-screen  transition-all bg-white border-r border-gray-100 dark:bg-gray-800 dark:border-gray-700`}
       aria-label="Sidebar"
     >
-      <div className={`h-full ${!isOpen?"px-1":'px-3 '} pb-4 overflow-y-auto bg-white dark:bg-gray-800`}>
+     <div className={`h-full ${!isOpen ? "px-1" : 'px-3'} pb-4 bg-white dark:bg-gray-800 overflow-y-auto scrollbar-custom`}>
+
       <a href="#" className="flex mb-5 ms-2 md:me-24">
          <img src={logo} className="h-8 me-3" alt=" FreeEngineer Logo" />
               <span className=" text-one sm:block self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">

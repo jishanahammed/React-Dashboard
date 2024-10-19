@@ -33,6 +33,8 @@ import Product from '../../../pages/Product/product';
 import NewQuotation from '../../../pages/Quotation/newQuotation';
 import QuotationList from '../../../pages/Quotation/QuotationList';
 
+import MyCompany from '../../../pages/mycompany';
+
 const AuthRouts = () => {
   return (
     <Routes>
@@ -44,7 +46,14 @@ const AuthRouts = () => {
           </ProtectedRoute>
         } 
       />
-
+      <Route 
+        path="/my/company" 
+        element={
+          <ProtectedRoute>
+            <Layout><MyCompany /></Layout>
+          </ProtectedRoute>
+        } 
+      />
       <Route 
         path="/user/list" 
         element={

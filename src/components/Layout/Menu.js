@@ -20,6 +20,11 @@ import {
           label: 'Dashboard',
         },
         {
+          to: '/my/company',
+          icon: faBuilding,
+          label: 'MY Company',
+        },
+        {
           to: '/user/list',
           icon: faUsers,
           label: 'User List',

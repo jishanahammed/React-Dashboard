@@ -14,6 +14,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #f3f4f7;
 }
+/* For WebKit browsers (Chrome, Safari) */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 4px !important; /* Adjust the width */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.5); /* Scrollbar thumb color */
+  border-radius: 50px; /* Rounded scrollbar */
+}
+
+/* For Firefox */
+.scrollbar-custom {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #acacac80 transparent; /* Thumb and track color */
+  border-radius: 50px;
+}
 
 @media (max-width: 660px) {
   .mobilesidebar {

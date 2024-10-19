@@ -1,68 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faUsers, faChartLine, faCommentDots } from '@fortawesome/free-solid-svg-icons';
-import RevenueSalesChart from '../components/chart/RevenueSalesChart';
-import WeeklyChart from '../components/chart/WeeklyChart';
+import { faPlus, faEdit, faTrash, faTimes ,faEye,faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import Breadcrumb from '../components/Ui_Element/Breadcrumb';
+import { quotation} from '../assets/Demodata/demo';
+import { PDFDownloadLink,pdf } from '@react-pdf/renderer';
+import Invoice from './ReportUtility/Invoice';
 
 const Dashboard = () => {
-  const items = [
-    {
-      icon: faEye,
-      title: '$3.456K',
-      subtitle: 'Total views',
-      change: '0.43%',
-    },
-    {
-      icon: faUsers,
-      title: '1,234',
-      subtitle: 'Total users',
-      change: '1.2%',
-    },
-    {
-      icon: faChartLine,
-      title: '75%',
-      subtitle: 'Growth rate',
-      change: '3.5%',
-    },
-    {
-      icon: faCommentDots,
-      title: '512',
-      subtitle: 'New messages',
-      change: '0.5%',
-    },
-  ];
+
+
+  const handleOpenPdf = async () => {
+    const blob = await pdf(<Invoice/>).toBlob();
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+  };
+
 
   return (
     <div className='dark:text-white'>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mt-5">
-        {items.map((item, index) => (
-          <div key={index} className="rounded-sm border border-stroke bg-white dark:dark:bg-gray-800 p-5 shadow-md dark:border-strokedark dark:bg-boxdark">
-            <div className="flex h-11.5 w-11.5 items-left justify-left rounded-full bg-meta-2 dark:bg-meta-4 text-primary-900 dark:text-white">
-              <FontAwesomeIcon icon={item.icon} className="fill-primary dark:fill-white" size="lg" />
-            </div>
-            <div className="mt-4 flex items-end justify-between">
-              <div>
-                <h4 className="text-gray-900  font-bold text-black dark:text-white">{item.title}</h4>
-                <span className="text-sm font-medium text-gray-500 ">{item.subtitle}</span>
-              </div>
-              <span className="flex items-center gap-1 text-sm font-medium text-sucess-500">
-                {item.change}
-                <FontAwesomeIcon icon={faChartLine} className="fill-meta-3" size="sm" />
-              </span>
-            </div>
-          </div>
-        ))}
+    <>
+    <Breadcrumb
+      pageName={"Quotations"}
+      currentPage={"Dashboard"}
+    />
+    <div className="grid grid-cols-1 shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-900">
+      <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-2 border-b border-gray-200">
+        <h2 className="text-xl md:text-2xl  font-bold text-gray-100 dark:text-gray-100">Quotation List</h2>
       </div>
-      <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-  {/* Chart Container */}
-  <div className="col-span-12 rounded-sm border border-stroke bg-white dark:dark:bg-gray-800 px-5 pt-7.5 pb-5 shadow-md dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
-    <RevenueSalesChart />
-  </div>
-  <div className="col-span-12 rounded-sm border border-stroke bg-white dark:dark:bg-gray-800 p-7.5 shadow-md  dark:border-strokedark dark:bg-boxdark xl:col-span-4">
-    <WeeklyChart />
-  </div>
 
-</div>
+      <div className="card-body p-5 text-[15px]">
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-myorange-100 text-gray-700 dark:bg-gray-900">
+                <th className="border p-2 text-left">SL</th>
+                <th className="border p-2 text-left">Quote Number</th>
+                <th className="border p-2 text-left">Company</th>
+                <th className="border p-2 text-left">Project</th>
+                <th className="border p-2 text-left">Expiry Date</th>
+                <th className="border p-2 text-center">Create Date</th>
+                <th className="border p-2 text-center">Create By</th>
+                <th className="border p-2 text-center">Status</th> 
+                <th className="border p-2 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {quotation.map((quotation, index) => (
+                <tr key={quotation.id} className="hover:bg-gray-100 transition-colors">
+                  <td className="border p-2">{index + 1}</td>
+                  <td className="border p-2">{quotation.quoteNumber}</td>
+                  <td className="border p-2">{quotation.company}</td>
+                  <td className="border p-2 text-left">{quotation.project}</td>
+                  <td className="border p-2">{quotation.expiryDate}</td>
+                  <td className="border p-2 text-center">{quotation.createDate}</td>
+                  <td className="border p-2 text-center">{quotation.createdBy}</td>
+                  <td className="border p-2 text-center">
+                      <span className={`py-1 px-3 rounded-full text-xs ${
+                        quotation.status === 'Approved' ? 'bg-green-500 text-white' :
+                        quotation.status === 'Pending' ? 'bg-yellow-500 text-white' :
+                        'bg-gray-400 text-white'
+                      }`}>
+                        {quotation.status}
+                      </span>
+                    </td>
+                  <td className="border p-2 text-center">
+                  <button className=" text-mygreen-100 hover:text-blue-700">
+                      <FontAwesomeIcon icon={faEye} />
+                    </button>
+                    <button className="ml-2 text-mygreen-100 hover:text-blue-700">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button className="ml-2 text-myorange-100 hover:text-red-700">
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                    <button className="ml-2 text-slate-600 hover:text-blue-700">
+                  <PDFDownloadLink document={<Invoice />} fileName={quotation.quoteNumber}>
+                    {({ blob, url, loading, error }) =>
+                    loading ? 'Loading document...' : (
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <FontAwesomeIcon icon={faFilePdf} onClick={handleOpenPdf} />             
+                        </div>
+                    )
+                    }
+                </PDFDownloadLink>
+            </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </>
 
     </div>
   );
