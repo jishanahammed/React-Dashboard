@@ -31,6 +31,7 @@ module.exports = {
         'two': '#5E9448',
         't-one':"#5faa432b",
         myorange:{
+          900:"#bc881f",
           100:"#dda229d6",
           80:"#dda229d6",
            50:"#ccffb7"

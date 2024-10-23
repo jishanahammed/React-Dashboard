@@ -22,7 +22,7 @@ import {
         {
           to: '/my/company',
           icon: faBuilding,
-          label: 'MY Company',
+          label: 'Contact Information',
         },
         {
           to: '/user/list',

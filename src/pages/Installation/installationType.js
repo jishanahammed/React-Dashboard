@@ -82,7 +82,7 @@ const InstallationType = () => {
              <div className="overflow-x-auto">
             <table className="min-w-full table-auto border-collapse">
               <thead>
-                <tr className="bg-myorange-20 dark:bg-gray-900">
+                <tr className="bg-myorange-900 text-gray-100">
                   <th className="border p-2 text-left">SL</th>
                   <th className="border p-2 text-left">Name</th>
                   <th className="border p-2 text-left">Description</th>

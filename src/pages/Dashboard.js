@@ -47,7 +47,7 @@ const Dashboard = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-myorange-100 text-gray-700 dark:bg-gray-900">
+              <tr className="bg-myorange-900 text-gray-100 dark:bg-gray-900">
                 <th className="border p-2 text-left">SL</th>
                 <th className="border p-2 text-left">Quote Number</th>
                 <th className="border p-2 text-left">Company</th>

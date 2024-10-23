@@ -100,7 +100,7 @@ const Company = () => {
                     <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
-                        <tr className="bg-myorange-100 text-gray-700 dark:bg-gray-900">
+                        <tr className="bg-myorange-900 text-gray-100 dark:bg-gray-900">
                                 <th className="border p-2 text-left">SL</th>
                                 <th className="border p-2 text-left">Name</th>
                                 <th className="border p-2 text-left">Address</th>

@@ -57,10 +57,10 @@ const MyCompany = () => {
 
   return (
     <>
-      <Breadcrumb pageName="My Company" currentPage="My Company" />
+      <Breadcrumb pageName="Contact Information" currentPage="Contact Information" />
       <div className="grid grid-cols-1 shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-900">
         <div className="card-header bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-2 border-b border-gray-200">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">My Company</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">Contact Information</h2>
           <button
             className="text-gray-100 dark:text-gray-100"
             onClick={handleEditToggle}

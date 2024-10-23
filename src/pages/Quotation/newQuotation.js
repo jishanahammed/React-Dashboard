@@ -136,7 +136,7 @@ console.log(companyName);
         <div className="overflow-x-auto p-5">
           <table className="min-w-full table-auto border-collapse">
             <thead>
-            <tr className="  bg-myorange-100 text-gray-700">
+            <tr className="bg-myorange-900 text-gray-100">
                 <th className="border p-2 text-left">SL</th>
                 <th className="border p-2 text-left">Item Name</th>
                 {/* <th className="border p-2 text-left">Brand</th>
