@@ -6,14 +6,14 @@ import Breadcrumb from '../components/Ui_Element/Breadcrumb';
 const MyCompany = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [companyInfo, setCompanyInfo] = useState({
-    name: 'My Company Name',
-    email: 'info@mycompany.com',
-    mobile: '123-456-7890',
-    officeNumber: '098-765-4321',
-    address: '123 Main Street, City, Country',
+    name: 'Free Engineer',
+    email: 'eric@freeengineer.com.au',
+    mobile: '+61 422 634 934',
+    officeNumber: '+613 91112431',
+    address: '17 Granault Parade, Corio VIC 3214.',
     website: 'https://www.mycompany.com',
-    linkedIn: 'https://www.linkedin.com/company/mycompany',
-    youtube: 'https://www.youtube.com/mycompany',
+    linkedIn: 'https://www.linkedin.com/company/solarpedia-au/',
+    youtube: 'https://www.youtube.com/watch?v=WBAT5amfiGg',
     facebook: 'https://www.facebook.com/mycompany',
     twitter: 'https://www.twitter.com/mycompany',
   });
@@ -47,10 +47,10 @@ const MyCompany = () => {
           name={name}
           value={value}
           onChange={handleInputChange}
-          className="col-span-8 p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-100"
+          className="col-span-8 p-3 border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-100"
         />
       ) : (
-        <p className="col-span-8 text-gray-600 dark:text-gray-200">{value}</p>
+        <p className="col-span-8 text-gray-600 dark:text-gray-200 rounded-md p-3 border border:gray-100">{value}</p>
       )}
     </div>
   );

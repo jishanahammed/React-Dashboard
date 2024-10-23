@@ -13,22 +13,24 @@ import QUInvoice from '../ReportUtility/quInvoice';
 const NewQuotation = () => {
   const [quoteNumber, setQuoteNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
-  const [company, setCompany] = useState('');
+  const [company, setCompany] = useState(0);
+  const [companyName, setCompanyName] = useState(null);
   const [project, setProject] = useState('');
   const [selectEquipment, setSelectEquipment] = useState([]);
   const [selectFEServices, setSelectFEServices] = useState([]);
   const [selectInstallation, setselectInstallation] = useState([]);
   const [selectExclussions, setSelectExclussions] = useState([]);
 
-  const companies = [
-    { id: 1, name: 'Company A' },
-    { id: 2, name: 'Company B' },
-    { id: 3, name: 'Company C' },
-  ];
 
+  const companies = [
+    { id: 1, name: 'Lovitt Technologies Australia',email:"enquiry@lovittech.com.au", address: '207 Para Road,Greensborough VIC 3088 Australia', license: 'ABC123', state: 'Greensborough', description: 'Description 1' },
+    { id: 2, name: 'Mino Structural Engineering Pty. Ltd.',email:"minosengg@Mino.com.au", address: 'Building 3/69 Dalton Rd, Thomastown VIC 3074, Australia', license: 'XYZ789', state: 'Thomastown', description: 'Description 2' },
+    { id: 3, name: 'Cmax Group.', email:"support@cmaxGroup.com.au", address: '6 McRorie Ct, Cambridge TAS 7170, Australia', license: 'XYZ789', state: 'Cambridge', description: 'Description 2' },
+];
   const projectsData = {
-    1: ['Lovitt Tech'],
-    2: ['Minos structural Engg']
+    1: ['Lovitt Tech P1', 'Lovitt Tech P2','Lovitt Tech P3'],
+    2: ['Minos structural Engg p1','Minos structural Engg p2','Minos structural Engg p3'],
+    3: ['Cmax Group p1','Cmax Group p2','Cmax Group p3']
   };
 
   const [projects, setProjects] = useState([]);
@@ -43,6 +45,9 @@ const NewQuotation = () => {
 
   useEffect(() => {
     if (company) {
+      const companyId = Number(company);
+      const selectedCompany = companies.find((c) => c.id === companyId);
+      setCompanyName(selectedCompany);
       setProjects(projectsData[company] || []);
     } else {
       setProjects([]);
@@ -51,11 +56,11 @@ const NewQuotation = () => {
 
   const handleOpenPdf = async () => {
     const blob = await pdf(<QUInvoice quoteNumber={quoteNumber} expiryDate={expiryDate}
-      company={company} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices} selectInstallation={selectInstallation} />).toBlob();
+      company={companyName} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices} selectInstallation={selectInstallation} />).toBlob();
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
   };
-
+console.log(companyName);
   // Check if all required fields are filled
   const isFormValid = expiryDate && company && project;
 
@@ -156,7 +161,7 @@ const NewQuotation = () => {
             disabled={!isFormValid}
           >
             <PDFDownloadLink document={<QUInvoice quoteNumber={quoteNumber} expiryDate={expiryDate}
-              company={company} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices}
+              company={companyName} selectEquipment={selectEquipment} project={project} selectFEServices={selectFEServices}
               selectInstallation={selectInstallation} />}
               fileName={quoteNumber}>
               {({ loading }) => loading ? 'Loading document...' : (

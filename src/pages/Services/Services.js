@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
+import {FEServices} from '../../assets/Demodata/demo';
 
 const servicesTypes = [
     { value: 'FE Service', label: 'FE Service' },
@@ -15,10 +16,7 @@ const engineers = [
     { value: 'Free Engineer', label: 'Free Engineer' },
 ];
 
-const demoServices = [
-    { id: 1, name: 'Service 1',  engineer: 'Engineering', rate: '100', unit: 'Hours', projectSize: 'Medium', description: 'Description 1' },
-    { id: 2, name: 'Service 2',  engineer: 'Contractor', rate: '150', unit: 'Days', projectSize: 'Large', description: 'Description 2' },
-];
+const demoServices =FEServices;
 
 const Services = () => {
     const [formData, setFormData] = useState({

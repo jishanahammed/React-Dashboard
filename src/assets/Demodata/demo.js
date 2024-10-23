@@ -1,4 +1,8 @@
-
+export const demoCompanies = [
+  { id: 1, name: 'Lovitt Technologies Australia', address: '207 Para Road,Greensborough VIC 3088 Australia', license: 'ABC123', state: 'Greensborough', description: 'Description 1' },
+  { id: 2, name: 'Mino Structural Engineering Pty. Ltd.', address: 'Building 3/69 Dalton Rd, Thomastown VIC 3074, Australia', license: 'XYZ789', state: 'Thomastown', description: 'Description 2' },
+  { id: 3, name: 'Cmax Group.', address: '6 McRorie Ct, Cambridge TAS 7170, Australia', license: 'XYZ789', state: 'Cambridge', description: 'Description 2' },
+];
 
 export const EquipmentData = [
     { id: 1, name: 'Solar Panel', equipmentType: 'Solar-Equipment', brand: 'Risen', model: 'RISEN RSM40-8-415M', unit: 'Each', unitCost: 91, description: '415 Watt panels\n25 Year Product & 25 Year Linear Performance Warranty', size: '415' },
@@ -23,69 +27,118 @@ export const FEServices = [
 export const Installation = [
     { id: 1, name: 'Installation of Solar System',   rate: '0', unit: '', Region: '', description: '' },
     { id: 2, name: 'DC and AC cabling',   rate: '0', unit: '', Region: '', description: '' },
-    { id: 3, name: 'Elevated Work Platform',   rate: '0', unit: '', Region: '', description: '' },
-    { id: 4, name: 'Crane / Scissor Lift',   rate: '0', unit: '', Region: '', description: '' },
+    { id: 3, name: 'Elevated Work Platform',   rate: '1', unit: '', Region: '', description: '' },
+    { id: 4, name: 'Crane / Scissor Lift',   rate: '1', unit: '', Region: '', description: '' },
     { id: 5, name: 'Supply and Install Sunlock racking (TRIMDEK)',   rate: '0', unit: '', Region: '', description: '' },
     { id: 6, name: 'Supply and Install Sunlock racking (TRIMDEK)',  rate: '0', unit: '', Region: '', description: '' },
 ]
 
-export const Exclussions = [
-    { id: 1, name: 'Test Exclussions one',   rate: '0', unit: '', description: '' },
-    { id: 2, name: 'Test Exclussions two',   rate: '0', unit: '', description: '' },
-    { id: 3, name: 'Test Exclussions three',   rate: '0', unit: '', description: '' },
-    { id: 4, name: 'Test Exclussions forth',   rate: '0', unit: '', description: '' },
-    { id: 5, name: 'Test Exclussions five',   rate: '0', Region: '', description: '' }
+export const Exclussions  = [
+  { id: 1, name: "Engineering and SLD's",   rate: '0', unit: '', description: '' },
+  { id: 2, name: 'Supply of Grid Protection unit',   rate: '0', unit: '', description: '' },
+  { id: 3, name: 'DNSP Grid Connection',   rate: '0', unit: '', description: '' },
 ]
+
 
 export const quotation = [
     {
       id: 1,
       quoteNumber: 'QTN-728711',
-      company: 'Company A',
-      project: 'Lovitt Tech',
+      company: 'Lovitt Technologies Australia',
+      project: 'Lovitt Tech P1',
       expiryDate: '2024-12-30',
       createDate: '2024-10-01',
-      createdBy: 'Tanbeer Ahammed',
       status: 'Draft'
     },
     {
-      id: 2,
-      quoteNumber: 'QTN-951926',
-      company: 'Company B',
-      project: 'Minos structural Engg',
-      expiryDate: '2024-12-25',
-      createDate: '2024-09-28',
-      createdBy: 'Tanbeer Ahammed',
-      status: 'Draft'
-    },
-    {
-      id: 2,
-      quoteNumber: 'QTN-951976',
-      company: 'Company B',
-      project: 'Minos structural Engg',
-      expiryDate: '2024-12-25',
-      createDate: '2024-09-28',
-      createdBy: 'Tanbeer Ahammed',
-      status: 'Drafty'
-    },
-    {
-      id: 2,
-      quoteNumber: 'QTN-951900',
-      company: 'Company B',
-      project: 'Minos structural Engg',
-      expiryDate: '2024-12-25',
-      createDate: '2024-09-28',
-      createdBy: 'Tanbeer Ahammed',
-      status: 'Pending'
-    },
+    id: 2,
+    quoteNumber: 'QTN-727717',
+    company: 'Lovitt Technologies Australia',
+    project: 'Lovitt Tech P1',
+    expiryDate: '2024-12-30',
+    createDate: '2024-10-01',
+    status: 'Approved'
+  },
     {
       id: 3,
+      quoteNumber: 'QTN-950026',
+      company: 'Lovitt Technologies Australia',
+      project: 'Lovitt Tech P2',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id: 4,
+      quoteNumber: 'QTN-951955',
+      company: 'Lovitt Technologies Australia',
+      project: 'Lovitt Tech P2',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id: 5,
+      quoteNumber: 'QTN-951926',
+      company: 'Lovitt Technologies Australia',
+      project: 'Lovitt Tech P2',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Approved'
+    },
+    {
+      id: 6,
+      quoteNumber: 'QTN-951976',
+      company: 'Lovitt Technologies Australia',
+      project: 'Lovitt Tech P3',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id:7,
+      quoteNumber: 'QTN-951900',
+      company: 'Mino Structural Engineering Pty. Ltd.',
+      project: 'Minos structural Engg P1',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id:8,
+      quoteNumber: 'QTN-951900',
+      company: 'Mino Structural Engineering Pty. Ltd.',
+      project: 'Minos structural Engg P2',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id: 9,
+      quoteNumber: 'QTN-951900',
+      company: 'Mino Structural Engineering Pty. Ltd.',
+      project: 'Minos structural Engg P3',
+      expiryDate: '2024-12-25',
+      createDate: '2024-09-28',
+      status: 'Draft'
+    },
+    {
+      id: 19,
       quoteNumber: 'QTN-568521',
-      company: 'Company C',
-      project: 'Project C1',
+      company:'Cmax Group.',
+      project: 'Cmax Group P1',
       expiryDate: '2024-12-20',
       createDate: '2024-09-15',
-      createdBy: 'Tanbeer Ahammed',
+      status: 'Pending'
+    }
+    ,
+    {
+      id:11,
+      quoteNumber: 'QTN-568521',
+      company: 'Cmax Group.',
+      project: 'Cmax Group P2',
+      expiryDate: '2024-12-20',
+      createDate: '2024-09-15',
       status: 'Approved'
     }
   ];

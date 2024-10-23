@@ -2,17 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
-
+import {Installation} from '../../assets/Demodata/demo';
 const installationsTypes = [
     { value: 'Residential Installation', label: 'Residential Installation' },
     { value: 'Commercial Installation', label: 'Commercial Installation' },
     { value: 'Industrial Installation', label: 'Industrial Installation' },
 ];
 
-const demoInstallations = [
-    { id: 1, name: 'Installation 1',  rate: '200', unit: 'Hours', region: 'North', description: 'Description 1' },
-    { id: 2, name: 'Installation 2', rate: '350', unit: 'Days', region: 'South', description: 'Description 2' },
-];
+const demoInstallations = Installation;
 
 const Installations = () => {
     const [formData, setFormData] = useState({

@@ -4,8 +4,9 @@ import { faPlus, faEdit, faTrash, faTimes,faEye  } from '@fortawesome/free-solid
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 import { useNavigate } from 'react-router-dom'; // for navigation
 const demoCompanies = [
-    { id: 1, name: 'Company 1', address: '123 Main St', license: 'ABC123', state: 'California', description: 'Description 1' },
-    { id: 2, name: 'Company 2', address: '456 Maple Ave', license: 'XYZ789', state: 'Texas', description: 'Description 2' },
+    { id: 1, name: 'Lovitt Technologies Australia', address: '207 Para Road,Greensborough VIC 3088 Australia', license: 'ABC123', state: 'Greensborough', description: 'Description 1' },
+    { id: 2, name: 'Mino Structural Engineering Pty. Ltd.', address: 'Building 3/69 Dalton Rd, Thomastown VIC 3074, Australia', license: 'XYZ789', state: 'Thomastown', description: 'Description 2' },
+    { id: 3, name: 'Cmax Group.', address: '6 McRorie Ct, Cambridge TAS 7170, Australia', license: 'XYZ789', state: 'Cambridge', description: 'Description 2' },
 ];
 
 const Company = () => {

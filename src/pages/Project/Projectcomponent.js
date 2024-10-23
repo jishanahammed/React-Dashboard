@@ -4,16 +4,17 @@ import { faPlus, faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-ic
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
 const projectTypes = [
-    { value: 'Residential', label: 'Residential' },
-    { value: 'Commercial', label: 'Commercial' },
-    { value: 'Industrial', label: 'Industrial' },
+    { value: 'Small Project', label: 'Small Project' },
+    { value: 'Medium Project', label: 'Medium Project' },
+    { value: 'Small Project', label: 'Small Project' },
 ];
 
 
 
 const demoProjects = [
-    { id: 1, name: 'Project 1', projectType: 'Residential', company: 'Company 1', city: 'City A', description: 'Description 1', projectSize: 'Large' },
-    { id: 2, name: 'Project 2', projectType: 'Commercial', company: 'Company 2', city: 'City B', description: 'Description 2', projectSize: 'Medium' },
+    { id: 1, name: 'Lovitt Tech P1', projectType: 'Small Project', company: 'Lovitt Technologies Australia', city: 'City A', description: 'Description 1', projectSize: '0-90 kW' },
+    { id: 2, name: 'Lovitt Tech P2', projectType: 'Medium Project', company: 'Lovitt Technologies Australia', city: 'City B', description: 'Description 2', projectSize: '91-300 kW' },
+    { id: 2, name: 'Lovitt Tech P3', projectType: 'Small Project', company: 'Lovitt Technologies Australia', city: 'City B', description: 'Description 2', projectSize: '301-1000 kW' },
 ];
 
 const Projectcomponent = ({projectName}) => {

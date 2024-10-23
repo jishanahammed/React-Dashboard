@@ -32,7 +32,7 @@ import Exclussions from '../../../pages/Exclussions/Exclussions';
 import Product from '../../../pages/Product/product';
 import NewQuotation from '../../../pages/Quotation/newQuotation';
 import QuotationList from '../../../pages/Quotation/QuotationList';
-
+import QuotationView from '../../../pages/Quotation/quotationView';
 import MyCompany from '../../../pages/mycompany';
 
 const AuthRouts = () => {
@@ -254,7 +254,14 @@ const AuthRouts = () => {
               </ProtectedRoute>
             } 
           />
-
+      <Route 
+            path="/pages/quotation/view" 
+            element={
+              <ProtectedRoute>
+                <Layout><QuotationView/></Layout>
+              </ProtectedRoute>
+            } 
+          />
 
     </Routes>
 

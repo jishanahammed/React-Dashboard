@@ -194,7 +194,7 @@ termsContainer: {
   }
 });
 
-const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selectFEServices,selectInstallation}) => (
+const QuInvoicecopy = ({quotation,company,selectEquipment,selectFEServices,selectInstallation}) => (
  
   <Document>
     <Page size="A4" style={styles.page}>
@@ -213,7 +213,7 @@ const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selec
     <Text style={{ borderWidth: 1, borderColor: '#ddd', padding: 4 }}>
       <Text  style={{fontWeight:"bold"}}>  Quotation Date:{"2024-10-17"} </Text>
      
-      <Text  style={{marginLeft:3,fontWeight:"bold"}}>  Expiry Date: {expiryDate} </Text>
+      <Text  style={{marginLeft:3,fontWeight:"bold"}}>  Expiry Date: {quotation.expiryDate} </Text>
      </Text>
   </View>
 </View>
@@ -236,15 +236,15 @@ const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selec
     <Text style={{fontSize: 12, fontWeight: '700', marginBottom: 5,borderBottomWidth: 1, width: 40, borderBottomColor: '#999999'}}>
   To
 </Text>
-     <Text style={styles.mb10}>  Quote No: {quoteNumber}</Text>
-     <Text style={styles.mb10}>  Name: {company?.name}</Text>
-      <Text style={styles.mb10}>  Email: {company?.email}</Text>
+     <Text style={styles.mb10}>  Quote No: {quotation.quoteNumber}</Text>
+     <Text style={styles.mb10}>  Name:{quotation.company} </Text>
+      <Text style={styles.mb10}>  Email:test@company.com.au </Text>
       <Text style={styles.mb10}>  Mobile: +61 422 634 934 </Text>
-      <Text style={styles.mb10}>  Address : {company?.address}</Text>
+      <Text style={styles.mb10}>  Address :207 Para Road,Greensborough VIC 3088 Australia </Text>
     </View>
   </View>
   <View style={styles.projectheader}>
-  <Text  style={{fontSize:9, fontWeight: '900'}}>  Project : {project}.</Text>
+  <Text  style={{fontSize:9, fontWeight: '900'}}>  Project : {quotation.project}.</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Project Type :Medium.</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Maximum Size :90 kW</Text>
   <Text style={{fontSize:9, fontWeight: '900'}}>  Minimum Size :300kW.</Text>
@@ -293,10 +293,10 @@ const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selec
     </View>
 
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>{item.quantity}</Text>
+<Text style={styles.tableCell}>{item.qty}</Text>
 </View>
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>{item.totalPrice}</Text>
+<Text style={styles.tableCell}>{item.qty*item.unitCost}</Text>
 </View>
 
 </View>
@@ -327,10 +327,10 @@ const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selec
     </View>
 
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>{item.quantity}</Text>
+<Text style={styles.tableCell}>{item.qty}</Text>
 </View>
 <View style={styles.tableCol}>
-<Text style={styles.tableCell}>{item.totalPrice}</Text>
+<Text style={styles.tableCell}>{item.qty*item.rate}</Text>
 </View>
 
 </View>
@@ -410,4 +410,4 @@ const QUInvoice = ({quoteNumber,expiryDate,company,project,selectEquipment,selec
   </Document>
 );
 
-export default QUInvoice;
+export default QuInvoicecopy;

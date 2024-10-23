@@ -55,7 +55,7 @@ const ExclussionsComponent = ({ Exclussions,selectExclussions,setSelectExclussio
       <tbody>
         <tr className='bg-gray-100 border'>
           <td className="p-2 font-semibold" colSpan={4}>
-          Exclussions
+          Exclusions 
           </td>
           <td className="flex justify-end p-2">
           <div className='flex'>

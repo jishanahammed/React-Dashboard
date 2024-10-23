@@ -5,7 +5,10 @@ import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
 const ProjectType = () => {
   const [projects, setProjects] = useState([
-    { name: 'Large Project', sizeMin: '800 sqft', sizeMax: '1000 sqft', marginValue: '15%' },
+    { name: 'Small Project', sizeMin: '0 kW', sizeMax: '90 kW', marginValue: '10%' },
+    { name: 'Medium Project', sizeMin: '91 kW', sizeMax: '300 kW', marginValue: '10%' },
+    { name: 'Large Project', sizeMin: '301 kW', sizeMax: '1000 kW', marginValue: '10%' },
+   
   ]);
 
   const [newProject, setNewProject] = useState({ name: '', sizeMin: '', sizeMax: '', marginValue: '' });

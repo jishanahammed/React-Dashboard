@@ -4,8 +4,9 @@ import { faPlus, faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-ic
 import Breadcrumb from '../../components/Ui_Element/Breadcrumb';
 
 const demoExclussions = [
-    { id: 1, name: 'Exclussion 1', rate: '150', unit: 'Hours', description: 'Description 1' },
-    { id: 2, name: 'Exclussion 2', rate: '400', unit: 'Days', description: 'Description 2' },
+    { id: 1, name: "Engineering and SLD's",   rate: '0', unit: '', description: '' },
+    { id: 2, name: 'Supply of Grid Protection unit',   rate: '0', unit: '', description: '' },
+    { id: 3, name: 'DNSP Grid Connection',   rate: '0', unit: '', description: '' },
 ];
 
 const Exclussions = () => {
@@ -82,7 +83,7 @@ const Exclussions = () => {
             <Breadcrumb pageName="Exclussions" currentPage="Exclussions" />
             <div className="grid grid-cols-1 shadow rounded-lg overflow-hidden bg-white dark:bg-gray-900">
                 <div className="card-header items-center bg-mygreen-80 dark:bg-gray-700 flex justify-between px-2 py-1 border-b border-gray-200">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">Exclussions List</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-100 dark:text-gray-100">Exclusions  List</h2>
                     <button
                         className="flex items-center sm-add-button bg-white text-two hover:bg-one hover:text-white"
                         onClick={() => setShowModal(true)}
